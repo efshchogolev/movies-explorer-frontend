@@ -1,8 +1,10 @@
 .app {
   background-color: #fff;
-  color: #000;
+  color: #fff;
   min-width: 320px;
   font-family: "Inter", "Arial", "Helvetica";
+  font-style: normal;
+  font-weight: 400;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
