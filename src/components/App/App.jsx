@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 
 function App() {
   return (
-    <div className="root">
+    <div className="app">
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
