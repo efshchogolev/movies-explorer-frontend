@@ -1,0 +1,78 @@
+.header {
+  display: flex;
+  min-height: 74px;
+  background-color: #073042;
+  color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header_black {
+  background-color: #202020;
+}
+
+.header__logo {
+  max-width: 38px;
+  max-height: 38px;
+  margin-left: 70px;
+  margin-right: 44px;
+}
+
+.header__auth-container {
+  margin-right: 70px;
+}
+
+.header__films-container {
+  display: flex;
+  align-items: center;
+}
+
+.header__account-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__avatar-container {
+  min-width: 30px;
+  min-height: 30px;
+  background-color: #313131;
+  background-image: url(../../images/user-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 6px;
+  margin-right: 70px;
+}
+
+.header__link {
+  color: #fff;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.header__link_account {
+  margin-right: 13px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.header__link_films {
+  font-size: 13px;
+  line-height: 18px;
+  margin-right: 16px;
+}
+
+.header__link_films_bold {
+  font-weight: 500;
+}
+
+.header__button {
+  background-color: #3ddc84;
+  border: none;
+  min-width: 76px;
+  min-height: 32px;
+  border-radius: 3px;
+}
