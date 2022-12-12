@@ -12,7 +12,7 @@ function Header() {
           <>
             <img src={logoPath} alt="логотип" className='header__logo' />
             <div className='header__auth-container'>
-              <Link href='#' className='header__link' to='/signup'>Регистрация</Link>
+              <Link className='header__link' to='/signup'>Регистрация</Link>
               <Link to='signin'><button className='header__button'>Войти</button></Link>
             </div>
           </>
