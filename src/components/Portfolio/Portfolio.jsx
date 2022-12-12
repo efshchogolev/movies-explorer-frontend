@@ -11,19 +11,19 @@ function Portfolio() {
             <li className='portfolio__list-item'>
               <a href='#' className='portfolio__link'>
                 Статичный сайт
-                <img src={arrowPath} className='portfolio__arrow' />
+                <img src={arrowPath} alt='Стрелка' className='portfolio__arrow' />
               </a>
             </li>
             <li className='portfolio__list-item'>
               <a href='#' className='portfolio__link'>
                 Адаптивный сайт
-                <img src={arrowPath} className='portfolio__arrow' />
+                <img src={arrowPath} alt='Стрелка' className='portfolio__arrow' />
               </a>
             </li>
             <li className='portfolio__list-item'>
               <a href='#' className='portfolio__link'>
                 Одностраничное приложение
-                <img src={arrowPath} className='portfolio__arrow' />
+                <img src={arrowPath} alt='Стрелка' className='portfolio__arrow' />
               </a>
             </li>
           </ul>
