@@ -1,0 +1,72 @@
+.about {
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  padding: 110px 0 100px 0;
+}
+
+.about__container {
+  margin: 0 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about__title-container {
+  display: flex;
+  border-bottom: 1px solid #dadada;
+  max-height: 50px;
+  max-width: 100vw;
+}
+
+.about__title {
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  font-size: 22px;
+  line-height: 27px;
+  margin: 0 0 23px 0;
+}
+
+.about__student-container {
+  display: flex;
+  margin-top: 66px;
+  justify-content: space-between;
+}
+
+.about__text-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.about__name {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about__profession {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 18px 0 0 0;
+}
+
+.about__text {
+  font-size: 14px;
+  line-height: 22px;
+  margin: 26px 0 0 0;
+}
+
+.about__link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 99px 0 0 0;
+}
+
+.about__photo {
+  max-width: 270px;
+  border-radius: 10px;
+}
