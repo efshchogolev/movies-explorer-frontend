@@ -1,0 +1,47 @@
+.card {
+  max-width: 364px;
+  width: 100%;
+  min-height: 271px;
+}
+.card__info {
+  margin: 0 14px 14px 14px;
+  display: grid;
+  grid-template-areas:
+    "name like"
+    "time like";
+  max-width: 336px;
+  row-gap: 9px;
+  width: 100%;
+  justify-content: space-between;
+}
+.card__name {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  margin: 0;
+  grid-area: name;
+}
+
+.card__time {
+  color: #8b8b8b;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0;
+  grid-area: time;
+}
+
+.card__save {
+  margin-top: 6px;
+  grid-area: like;
+  background-image: url(../../images/save-unactive.svg);
+  background-color: #202020;
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background-repeat: no-repeat;
+}
+
+.card__save_active {
+  background-image: url(../../images/save-active.svg);
+}
