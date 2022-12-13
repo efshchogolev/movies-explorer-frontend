@@ -1,3 +1,4 @@
+import ButtonMore from '../ButtonMore/ButtonMore'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import SearchForm from '../SearchForm/SearchForm'
@@ -8,6 +9,7 @@ function Movies() {
     <>
       <SearchForm />
       <MoviesCardList />
+      <ButtonMore />
     </>
   )
 }
