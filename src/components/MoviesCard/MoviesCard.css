@@ -2,9 +2,10 @@
   max-width: 364px;
   width: 100%;
   min-height: 271px;
+  background-color: #222;
 }
 .card__info {
-  margin: 0 14px 14px 14px;
+  margin: 14px;
   display: grid;
   grid-template-areas:
     "name like"
@@ -34,7 +35,9 @@
   margin-top: 6px;
   grid-area: like;
   background-image: url(../../images/save-unactive.svg);
-  background-color: #202020;
+  background-position: center;
+  background-color: #313131;
+  border-radius: 50%;
   border: none;
   width: 30px;
   height: 30px;
@@ -44,4 +47,18 @@
 
 .card__save_active {
   background-image: url(../../images/save-active.svg);
+}
+
+.card__delete {
+  margin-top: 6px;
+  grid-area: like;
+  background-image: url(../../images/delete-icon.svg);
+  background-position: center;
+  background-color: #313131;
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background-repeat: no-repeat;
+  border-radius: 50%;
 }

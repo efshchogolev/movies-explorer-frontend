@@ -17,7 +17,7 @@ function Header() {
             </div>
           </>
         } />
-        <Route path='/movies' element={
+        <Route path='movies' element={
           <>
             <div className='header__films-container'>
               <img src={logoPath} alt="логотип" className='header__logo' />
@@ -30,7 +30,20 @@ function Header() {
             </div>
           </>
         } />
-        <Route path='saved-movies' />
+        <Route path='saved-movies' element={
+          <>
+            <div className='header__films-container'>
+              <img src={logoPath} alt="логотип" className='header__logo' />
+              <Link href='#' className={cn('header__link', 'header__link_films_bold', 'header__link_films')} to='/'>Фильмы</Link>
+              <Link href='#' className={cn('header__link', 'header__link_films')} to='/signup'>Сохранённые фильмы</Link>
+            </div>
+            <div className='header__account-container'>
+              <Link href='#' className={cn('header__link', 'header__link_account')} to='/'>Аккаунт</Link>
+              <div className='header__avatar-container'></div>
+            </div>
+          </>
+
+        } />
       </Routes>
 
     </header>

@@ -1,15 +1,28 @@
 import ButtonMore from '../ButtonMore/ButtonMore'
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import SearchForm from '../SearchForm/SearchForm'
+import MoviesCard from '../MoviesCard/MoviesCard'
 import './Movies.css'
 
 function Movies() {
   return (
     <>
       <SearchForm />
-      <MoviesCardList />
-      <ButtonMore />
+      <MoviesCardList >
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} active={true} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} active={true} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} active={true} />
+        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} />
+      </MoviesCardList>
+      <ButtonMore visible={true} />
     </>
   )
 }

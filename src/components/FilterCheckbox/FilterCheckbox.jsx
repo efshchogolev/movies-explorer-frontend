@@ -4,7 +4,7 @@ function FilterCheckbox() {
   return (
     <div className="filter">
       <p className='filter__text'>Короткометражки</p>
-      <label className="filter__label" for="checkbox">
+      <label className="filter__label" htmlFor="checkbox">
         <input type="checkbox" id="checkbox" className='filter__input' />
         <div className="filter__slider round"></div>
       </label>
