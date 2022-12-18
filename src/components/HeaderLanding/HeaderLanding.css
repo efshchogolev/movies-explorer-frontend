@@ -1,0 +1,51 @@
+.landing-header {
+  display: flex;
+  padding: 18px 0 18px 0;
+  background-color: #073042;
+  color: #fff;
+  margin: 0 auto;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.landing-header__logo {
+  max-width: 38px;
+  max-height: 38px;
+  margin-left: 70px;
+  margin-right: 44px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.landing-header__logo:hover {
+  opacity: 0.8;
+}
+
+.landing-header__auth-container {
+  margin-right: 70px;
+}
+
+.landing-header__link {
+  color: #fff;
+  margin-right: 30px;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.landing-header__link:hover {
+  opacity: 0.8;
+}
+
+.landing-header__button {
+  background-color: #3ddc84;
+  border: none;
+  min-width: 76px;
+  min-height: 32px;
+  border-radius: 3px;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.landing-header__button:hover {
+  opacity: 0.8;
+}
