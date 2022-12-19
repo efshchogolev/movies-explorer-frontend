@@ -8,6 +8,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import HeaderLanding from "../HeaderLanding/HeaderLanding";
+import Register from "../Register/Register";
 
 function App() {
   return (
@@ -40,8 +41,15 @@ function App() {
             <Profile />
           </>
         } />
-        <Route path="/signin" />
-        <Route path="/signup" />
+        <Route path="/signin" element={
+          <>
+
+          </>
+        } />
+        <Route path="/signup" element={
+          <Register />
+        }
+        />
       </Routes>
 
     </div>
