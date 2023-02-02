@@ -45,6 +45,10 @@
   color: #ee3465;
 }
 
+.auth-form__error-message_invisible {
+  visibility: hidden;
+}
+
 .auth-form__button {
   width: 100%;
   background-color: #4285f4;
@@ -57,6 +61,16 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.auth-form__button_login {
+  margin-top: 157px;
+}
+
+.auth-form__button:hover {
+  opacity: 0.8;
 }
 
 .auth-form__text {

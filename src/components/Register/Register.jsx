@@ -18,7 +18,7 @@ function Register() {
         <label htmlFor='name' className='auth-form__label'>
           Пароль
           <input name='name' type='password' className='auth-form__input auth-form__input_password' placeholder='Ваш пароль'></input>
-          <span className="auth-form__error-message">Что-то пошло не так...</span>
+          <span className="auth-form__error-message auth-form__error-message_invisible">Что-то пошло не так...</span>
         </label>
       </AuthForm>
     </section>

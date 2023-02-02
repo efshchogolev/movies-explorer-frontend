@@ -9,6 +9,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import HeaderLanding from "../HeaderLanding/HeaderLanding";
 import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
         } />
         <Route path="/signin" element={
           <>
-
+            <Login />
           </>
         } />
         <Route path="/signup" element={

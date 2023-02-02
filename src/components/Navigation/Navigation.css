@@ -1,0 +1,28 @@
+.landing-navigation__auth-container {
+  margin: 3px 70px 0 0;
+}
+
+.landing-navigation__link {
+  color: #fff;
+  margin-right: 30px;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.landing-navigation__link:hover {
+  opacity: 0.8;
+}
+
+.landing-navigation__button {
+  background-color: #3ddc84;
+  border: none;
+  min-width: 76px;
+  min-height: 32px;
+  border-radius: 3px;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.landing-navigation__button:hover {
+  opacity: 0.8;
+}
