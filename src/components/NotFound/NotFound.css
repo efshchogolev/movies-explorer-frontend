@@ -1,0 +1,32 @@
+.not-found__container {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
+}
+
+.not-found__number {
+  margin: 246px 0 0 0;
+  font-size: 140px;
+  line-height: 169px;
+}
+
+.not-found__text {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.not-found__link {
+  color: #4285f4;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 0 0 6px;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+  margin: 184px 0 0 0;
+}
+
+.not-found__link:hover {
+  opacity: 0.8;
+}

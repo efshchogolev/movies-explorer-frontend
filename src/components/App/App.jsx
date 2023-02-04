@@ -10,6 +10,7 @@ import Profile from "../Profile/Profile";
 import HeaderLanding from "../HeaderLanding/HeaderLanding";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
           <Register />
         }
         />
+        <Route path="*" element={
+          <NotFound />
+        } />
       </Routes>
 
     </div>
