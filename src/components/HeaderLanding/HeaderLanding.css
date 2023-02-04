@@ -1,12 +1,17 @@
 .landing-header {
-  display: flex;
   padding: 18px 0 18px 0;
   background-color: #073042;
   color: #fff;
-  margin: 0 auto;
-  justify-content: space-between;
   font-size: 12px;
   line-height: 16px;
+}
+
+.landing-header__container {
+  margin: 0 auto;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  max-width: 1280px;
 }
 
 .landing-header__logo {
@@ -22,7 +27,7 @@
 }
 
 .landing-header__auth-container {
-  margin: 3px 70px 0 0;
+  margin-right: 70px;
 }
 
 .landing-header__link {

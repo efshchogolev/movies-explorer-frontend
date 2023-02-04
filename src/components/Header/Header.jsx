@@ -1,7 +1,6 @@
 import './Header.css'
 import logoPath from '../../images/logo.svg'
 import { Link } from "react-router-dom";
-const cn = require('classnames');
 
 function Header() {
   return (
@@ -10,12 +9,12 @@ function Header() {
         <Link to='/' >
           <img src={logoPath} alt="логотип" className='header__logo' />
         </Link>
-        <Link className={cn('header__link', 'header__link_films_bold', 'header__link_films')} to='/movies'>Фильмы</Link>
-        <Link className={cn('header__link', 'header__link_films')} to='/saved-movies'>Сохранённые фильмы</Link>
+        <Link className='header__link header__link_films_bold header__link_films' to='/movies'>Фильмы</Link>
+        <Link className='header__link header__link_films' to='/saved-movies'>Сохранённые фильмы</Link>
       </div>
       <div className='header__account-container'>
-        <Link href='#' className={cn('header__link', 'header__link_account')} to='#'>Аккаунт</Link>
-        <div className='header__avatar-container'></div>
+        <Link className='header__link header__link_account' to='/profile'>Аккаунт</Link>
+        <Link to='/profile' className='header__link header__link_avatar'><div className='header__avatar-container'></div></Link>
       </div>
     </header>
   )

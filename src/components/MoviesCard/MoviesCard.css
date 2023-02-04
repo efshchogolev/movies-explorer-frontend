@@ -43,6 +43,12 @@
   height: 30px;
   padding: 0;
   background-repeat: no-repeat;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.card__save:hover {
+  opacity: 0.8;
 }
 
 .card__save_active {
@@ -61,4 +67,10 @@
   padding: 0;
   background-repeat: no-repeat;
   border-radius: 50%;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.card__delete:hover {
+  opacity: 0.8;
 }
