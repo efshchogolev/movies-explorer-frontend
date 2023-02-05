@@ -18,7 +18,7 @@ function AuthForm({ buttonText, loginPage }) {
         <p className='auth-form__text'>
           Ещё не зарегестрированы?
           <Link className="auth-form__link" to="../signup">
-            Зарегестрироваться
+            Регистрация
           </Link>
         </p>
       </>

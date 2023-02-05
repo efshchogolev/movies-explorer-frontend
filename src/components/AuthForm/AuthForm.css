@@ -34,7 +34,7 @@
 }
 
 .auth-form__input_password {
-  color: #ee3465;
+  color: #fff;
 }
 
 .auth-form__error-message {
@@ -92,4 +92,10 @@
 
 .auth-form__link:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1279px) {
+  .auth-form {
+    padding: 0 0 232px 0;
+  }
 }

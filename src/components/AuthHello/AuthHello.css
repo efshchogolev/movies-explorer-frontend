@@ -22,3 +22,12 @@
   line-height: 29px;
   margin: 40px 0 0 0;
 }
+
+@media screen and (max-width: 1279px) {
+  .auth-hello {
+    padding: 232px 0 40px 0;
+  }
+  .auth-hello__text {
+    margin: 37px 0 0 0;
+  }
+}

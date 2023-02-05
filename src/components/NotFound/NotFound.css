@@ -1,12 +1,12 @@
-.not-found__container {
+.not-found {
   display: flex;
   margin: auto;
   align-items: center;
   flex-direction: column;
+  padding: 246px 0 0 0;
 }
 
 .not-found__number {
-  margin: 246px 0 0 0;
   font-size: 140px;
   line-height: 169px;
 }
@@ -29,4 +29,10 @@
 
 .not-found__link:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1279px) {
+  .not-found {
+    padding: 408px 0 222px 0;
+  }
 }
