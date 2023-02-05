@@ -18,7 +18,7 @@ function AuthForm({ buttonText, loginPage }) {
         <p className='auth-form__text'>
           Ещё не зарегестрированы?
           <Link className="auth-form__link" to="../signup">
-            {buttonText}
+            Зарегестрироваться
           </Link>
         </p>
       </>
@@ -41,7 +41,7 @@ function AuthForm({ buttonText, loginPage }) {
           <p className='auth-form__text'>
             Уже зарегистрированы?
             <Link className="auth-form__link" to="../signin">
-              {buttonText}
+              Войти
             </Link>
           </p>
         </>
