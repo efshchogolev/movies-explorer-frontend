@@ -82,3 +82,25 @@
   font-weight: 500;
   margin: 16px 0 0 0;
 }
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    padding-top: 232px;
+  }
+
+  .profile__data-container {
+    margin-top: 96px;
+  }
+
+  .profile__text-title_email {
+    margin-top: 18px;
+  }
+
+  .profile__button {
+    margin: 211px 0 0 0;
+  }
+
+  .profile__button_exit {
+    margin: 14px 0 0 0;
+  }
+}
