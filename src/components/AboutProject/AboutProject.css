@@ -99,3 +99,19 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@media screen and (max-width: 1279px) {
+  .project {
+    padding: 90px 50px 81px 50px;
+  }
+
+  .project__text {
+    margin: 21px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .project__timeline {
+    margin-top: 94px;
+  }
+}

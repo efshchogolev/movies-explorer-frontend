@@ -28,3 +28,25 @@
   align-self: flex-end;
   margin: 102px 0 0 0;
 }
+
+@media screen and (max-width: 1279px) {
+  .promo {
+    padding: 297px 44px 70px 44px;
+  }
+
+  .promo__container {
+    align-items: center;
+    max-width: 680px;
+  }
+
+  .promo__title {
+    max-width: 680px;
+    text-align: center;
+  }
+
+  .promo__image {
+    margin-top: 140px;
+    align-self: auto;
+    max-width: 680px;
+  }
+}

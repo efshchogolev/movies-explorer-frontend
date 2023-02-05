@@ -57,7 +57,19 @@
 .portfolio__link:hover {
   opacity: 0.8;
 }
+
 .portfolio__arrow {
   max-width: 29px;
   margin: 7px 6px 0 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .portfolio {
+    padding: 90px 50px 72px 50px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+    line-height: 50px;
+  }
 }

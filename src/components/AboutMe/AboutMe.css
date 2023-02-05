@@ -74,3 +74,43 @@
   max-height: 327px;
   width: 100%;
 }
+
+@media screen and (max-width: 1279px) {
+  .about {
+    padding: 90px 50px 0 50px;
+  }
+
+  .about__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about__profession {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+
+  .about__text {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 19px 0 0 0;
+  }
+
+  .about__text-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 364px;
+  }
+
+  .about__link {
+    margin: 88px 0 0 0;
+  }
+
+  .about__photo {
+    max-width: 255px;
+    border-radius: 10px;
+    max-height: 307px;
+    width: 100%;
+  }
+}

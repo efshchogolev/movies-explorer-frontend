@@ -1,5 +1,5 @@
 .landing-header {
-  padding: 18px 0 18px 0;
+  padding: 18px 70px 18px 70px;
   background-color: #073042;
   color: #fff;
   font-size: 12px;
@@ -7,17 +7,16 @@
 }
 
 .landing-header__container {
-  margin: 0 auto;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  max-width: 1280px;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .landing-header__logo {
   max-width: 38px;
   max-height: 38px;
-  margin-left: 70px;
   margin-right: 44px;
   transition: opacity 0.3s ease-in-out;
 }
@@ -27,7 +26,6 @@
 }
 
 .landing-header__auth-container {
-  margin-right: 70px;
 }
 
 .landing-header__link {
@@ -53,4 +51,10 @@
 
 .landing-header__button:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1279px) {
+  .landing-header {
+    padding: 18px 30px 18px 30px;
+  }
 }
