@@ -1,7 +1,7 @@
 .card-list {
   background-color: #202020;
   display: grid;
-  padding: 69px 0 17px 0;
+  padding: 69px 70px 17px 70px;
   grid-template-columns: repeat(auto-fit, 364px);
   align-items: center;
   justify-content: center;
