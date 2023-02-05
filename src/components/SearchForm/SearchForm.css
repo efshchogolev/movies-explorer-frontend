@@ -23,7 +23,7 @@
   width: 100%;
   border: 1.5px solid #aaaaaa;
   border-radius: 50px;
-  min-height: 48px;
+  min-height: 46px;
   align-items: center;
 }
 
@@ -39,18 +39,19 @@
   border-radius: 50px;
   background-color: #202020;
   border: none;
-  max-width: 885px;
+  max-width: 875px;
   width: 100%;
   color: #8b8b8b;
   font-size: 14px;
   line-height: 18px;
   outline: none;
   margin-left: 19px;
+  padding: 0;
 }
 
 .search__find-button {
   background-image: url(../../images/find-button.svg);
-  width: 34px;
+  width: 80px;
   background-color: #202020;
   height: 34px;
   border: none;
@@ -58,4 +59,27 @@
   background-position: right;
   margin-right: 7px;
   border-radius: 50px;
+  padding: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .search {
+    padding: 55px 30px 10px 30px;
+  }
+
+  .search__input {
+    margin-left: 16px;
+  }
+
+  .search__form {
+    flex-direction: column;
+  }
+
+  .search__form-container {
+    margin: 0;
+  }
+
+  .search__form {
+    margin-bottom: 19px;
+  }
 }

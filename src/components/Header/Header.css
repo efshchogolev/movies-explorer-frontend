@@ -1,20 +1,22 @@
 .header {
-  display: flex;
-  padding: 18px 0 18px 0;
+  padding: 18px 70px 18px 70px;
   background-color: #202020;
   color: #fff;
-  margin: 0 auto;
-  justify-content: space-between;
   font-size: 12px;
   line-height: 16px;
-  max-width: 1280px;
+}
+
+.header__container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .header__logo {
   max-width: 38px;
   max-height: 38px;
-  margin-left: 70px;
-  margin-right: 44px;
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -73,4 +75,18 @@
 
 .header__link_films_bold {
   font-weight: 500;
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    padding: 18px 30px 18px 30px;
+  }
+
+  .header__films-container {
+    display: none;
+  }
+
+  .header__account-container {
+    display: none;
+  }
 }

@@ -5,12 +5,12 @@
   background-color: #222;
 }
 .card__info {
-  margin: 14px;
+  margin: 14px 0 14px 14px;
   display: grid;
   grid-template-areas:
     "name like"
     "time like";
-  max-width: 336px;
+  max-width: 364px;
   row-gap: 9px;
   width: 100%;
   justify-content: space-between;
@@ -73,4 +73,19 @@
 
 .card__delete:hover {
   opacity: 0.8;
+}
+
+.card__image {
+  max-width: 364px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1279px) {
+  .card__info {
+    max-width: 311px;
+  }
+
+  .card {
+    min-height: 258px;
+  }
 }

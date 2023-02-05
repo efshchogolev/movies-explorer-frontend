@@ -49,3 +49,9 @@
   transform: translateX(16px);
   background-color: #3ddc84;
 }
+
+@media screen and (max-width: 1279px) {
+  .filter {
+    margin: 25px;
+  }
+}
