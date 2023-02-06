@@ -108,3 +108,39 @@
     line-height: 15px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .techs {
+    padding: 70px 18px 70px 18px;
+  }
+
+  .techs__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 0 27px 0;
+  }
+
+  .techs__subtitle {
+    margin: 60px 0 0 0;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__text {
+    margin: 26px 0 0 0;
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 24px;
+  }
+
+  .techs__blocks-container {
+    margin-top: 40px;
+    max-width: 178px;
+  }
+  .techs__block {
+    margin: 10px 10px 0 0;
+  }
+  .techs__block:nth-child(2n) {
+    margin-right: 0;
+  }
+}

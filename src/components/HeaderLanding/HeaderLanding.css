@@ -26,6 +26,7 @@
 }
 
 .landing-header__auth-container {
+  margin: 0;
 }
 
 .landing-header__link {
@@ -56,5 +57,29 @@
 @media screen and (max-width: 1279px) {
   .landing-header {
     padding: 18px 30px 18px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .landing-header {
+    padding: 18px 14px 18px 14px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .landing-header__link {
+    margin-right: 14px;
+  }
+
+  .landing-header__button {
+    min-width: 54px;
+    min-height: 26px;
+    border-radius: 3px;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .landing-header__auth-container {
+    margin: 6px 0 0 0;
   }
 }
