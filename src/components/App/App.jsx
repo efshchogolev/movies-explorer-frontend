@@ -17,36 +17,19 @@ function App() {
     <div className="app">
       <Routes>
         <Route path="/" element={
-          <>
-            <HeaderLanding />
-            <Main />
-            <Footer />
-          </>
+          <Main />
         } />
         <Route path="/movies" element={
-          <>
-            <Header />
-            <Movies />
-            <Footer />
-          </>
+          <Movies />
         } />
         <Route path="/saved-movies" element={
-          <>
-            <Header />
-            <SavedMovies />
-            <Footer />
-          </>
+          <SavedMovies />
         } />
         <Route path="/profile" element={
-          <>
-            <Header />
-            <Profile />
-          </>
+          <Profile />
         } />
         <Route path="/signin" element={
-          <>
-            <Login />
-          </>
+          <Login />
         } />
         <Route path="/signup" element={
           <Register />
@@ -56,7 +39,6 @@ function App() {
           <NotFound />
         } />
       </Routes>
-
     </div>
   );
 }
