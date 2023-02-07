@@ -99,3 +99,32 @@
     padding: 0 0 232px 0;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .auth-form {
+    /* padding: 0 0 232px 0; */
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .auth-form__button {
+    margin: 157px 0 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth-form__text {
+    margin-top: 15px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth-form__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth-form__button_login {
+    margin-top: 245px;
+  }
+}

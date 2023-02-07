@@ -71,6 +71,7 @@
   line-height: 16px;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
+  padding: 0;
 }
 
 .profile__button:hover {
@@ -102,5 +103,26 @@
 
   .profile__button_exit {
     margin: 14px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile {
+    padding-top: 67px;
+  }
+
+  .profile__data-container {
+    max-width: 260px;
+    margin-top: 80px;
+  }
+
+  .profile__button {
+    margin: 379px 0 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__button_exit {
+    margin: 16px 0 0 0;
   }
 }
