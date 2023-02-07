@@ -39,7 +39,7 @@
   border-radius: 50px;
   background-color: #202020;
   border: none;
-  max-width: 875px;
+  max-width: calc(100% - 80px);
   width: 100%;
   color: #8b8b8b;
   font-size: 14px;
@@ -73,13 +73,26 @@
 
   .search__form {
     flex-direction: column;
+    margin: 0;
   }
 
   .search__form-container {
     margin: 0;
   }
+}
 
-  .search__form {
-    margin-bottom: 19px;
+@media screen and (max-width: 767px) {
+  .search {
+    padding: 55px 10px 10px 10px;
+  }
+
+  .search__input {
+    font-size: 11px;
+    line-height: 18px;
+    margin-left: 15px;
+  }
+
+  .search__container {
+    margin: 0;
   }
 }

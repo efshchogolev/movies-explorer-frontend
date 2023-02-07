@@ -90,3 +90,9 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 18px 14px 18px 14px;
+  }
+}

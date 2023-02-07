@@ -1,18 +1,19 @@
 .card {
   max-width: 364px;
   width: 100%;
-  min-height: 271px;
+  /* min-height: 236px; */
+  max-height: 271px;
   background-color: #222;
 }
 .card__info {
-  margin: 14px 0 14px 14px;
+  margin: 14px;
   display: grid;
   grid-template-areas:
     "name like"
     "time like";
-  max-width: 364px;
+  max-width: 336px;
   row-gap: 9px;
-  width: 100%;
+  /* width: 100%; */
   justify-content: space-between;
 }
 .card__name {
@@ -78,14 +79,28 @@
 .card__image {
   max-width: 364px;
   width: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 1279px) {
-  .card__info {
+  /* .card__info {
     max-width: 311px;
   }
 
   .card {
     min-height: 258px;
+  } */
+}
+
+@media screen and (max-width: 767px) {
+  .card__info {
+    /* max-width: 272px; */
+    margin: 14px;
+  }
+
+  .card {
+    height: 100%;
+    max-height: 236px;
+    max-width: 300px;
   }
 }

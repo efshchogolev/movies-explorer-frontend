@@ -52,6 +52,29 @@
 
 @media screen and (max-width: 1279px) {
   .filter {
-    margin: 25px;
+    margin: 37px 25px 57px 25px;
+  }
+
+  .filter__text {
+    margin: 0 12px 0 0;
+  }
+  .filter__label {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .filter {
+    margin: 44px 0 44px 0;
+  }
+
+  /* .filter__label {
+    margin: 0;
+  } */
+
+  .filter__text {
+    margin: 0 13px 0 0;
+    line-height: 18px;
+    font-size: 11px;
   }
 }
