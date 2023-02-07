@@ -22,7 +22,7 @@ function Movies() {
         <MoviesCard button={'card__save'} />
         <MoviesCard button={'card__save'} />
       </MoviesCardList>
-      <ButtonMore visible={true} />
+      <ButtonMore invisible={true} />
     </>
   )
 }

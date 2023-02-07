@@ -13,7 +13,7 @@
 @media screen and (max-width: 1279px) {
   .card-list {
     padding: 69px 30px 17px 30px;
-    gap: 33px 30px;
+    gap: 36px 30px;
     grid-template-columns: repeat(auto-fit, 339px);
   }
 }

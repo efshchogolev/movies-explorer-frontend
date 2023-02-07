@@ -10,7 +10,7 @@ function MoviesCard({ active, button }) {
         <p className='card__time'>1ч 47м</p>
         <button className={cn(button, active ? 'card__save_active' : '')}></button>
       </div>
-      <img className='card__image' alt="Миниатюрное изображение фильма" src={imagePath}></img>
+      <img className='card__image' alt="Миниатюрное изображение фильма" src={imagePath} />
     </li>
   )
 }

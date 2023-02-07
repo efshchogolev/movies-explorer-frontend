@@ -1,8 +1,7 @@
 .card {
-  max-width: 364px;
-  width: 100%;
-  /* min-height: 236px; */
-  max-height: 271px;
+  width: 364px;
+  height: 271px;
+  /* max-height: 271px; */
   background-color: #222;
 }
 .card__info {
@@ -13,9 +12,9 @@
     "time like";
   max-width: 336px;
   row-gap: 9px;
-  /* width: 100%; */
   justify-content: space-between;
 }
+
 .card__name {
   font-weight: 500;
   font-size: 15px;
@@ -77,30 +76,24 @@
 }
 
 .card__image {
-  max-width: 364px;
   width: 100%;
-  object-fit: cover;
 }
 
 @media screen and (max-width: 1279px) {
-  /* .card__info {
-    max-width: 311px;
-  }
-
   .card {
-    min-height: 258px;
-  } */
+    width: 339px;
+    height: 258px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .card__info {
-    /* max-width: 272px; */
     margin: 14px;
   }
 
   .card {
     height: 100%;
-    max-height: 236px;
-    max-width: 300px;
+    height: 236px;
+    width: 300px;
   }
 }
