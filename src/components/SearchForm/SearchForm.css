@@ -25,6 +25,7 @@
   border-radius: 50px;
   min-height: 46px;
   align-items: center;
+  position: relative;
 }
 
 .search__form {
@@ -50,16 +51,18 @@
 }
 
 .search__find-button {
+  position: absolute;
   background-image: url(../../images/find-button.svg);
-  width: 80px;
+  background-size: 34px;
+  width: 34px;
   background-color: #202020;
   height: 34px;
   border: none;
   background-repeat: no-repeat;
   background-position: right;
-  margin-right: 7px;
+  right: 7px;
   border-radius: 50px;
-  padding: 0;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1279px) {

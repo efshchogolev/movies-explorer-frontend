@@ -7,7 +7,9 @@
 }
 
 .header__container {
+  position: relative;
   justify-content: space-between;
+  align-items: center;
   display: flex;
   flex-direction: row;
   max-width: 1140px;
@@ -24,6 +26,20 @@
 .header__logo:hover {
   opacity: 0.8;
 }
+
+/* .header__burger {
+  position: absolute;
+  width: 31px;
+  height: 23px;
+  background: transparent url("../../images/Burger.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  top: 8px;
+  right: 7px;
+  cursor: pointer;
+  z-index: 3;
+} */
 
 @media screen and (max-width: 1279px) {
   .header {
