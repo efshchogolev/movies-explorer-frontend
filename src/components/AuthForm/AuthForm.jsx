@@ -7,11 +7,11 @@ function AuthForm({ buttonText, loginPage }) {
       {loginPage ? <>
         <label htmlFor='name' className='auth-form__label'>
           E-mail
-          <input name='name' type='text' className='auth-form__input' placeholder='Ваш e-mail'></input>
+          <input id='name' type='text' className='auth-form__input' placeholder='Ваш e-mail'></input>
         </label>
-        <label htmlFor='name' className='auth-form__label'>
+        <label htmlFor='password' className='auth-form__label'>
           Пароль
-          <input name='name' type='password' className='auth-form__input auth-form__input_password' placeholder='Ваш пароль'></input>
+          <input id='password' type='password' className='auth-form__input auth-form__input_password' placeholder='Ваш пароль'></input>
           <span className="auth-form__error-message auth-form__error-message_invisible">Что-то пошло не так...</span>
         </label>
         <button type='submit' className='auth-form__button auth-form__button_login'>{buttonText}</button>
@@ -26,15 +26,15 @@ function AuthForm({ buttonText, loginPage }) {
         <>
           <label htmlFor='name' className='auth-form__label'>
             Имя
-            <input name='name' type='text' className='auth-form__input' placeholder='Ваше имя'></input>
+            <input id='name' type='text' className='auth-form__input' placeholder='Ваше имя'></input>
           </label>
-          <label htmlFor='name' className='auth-form__label'>
+          <label htmlFor='email' className='auth-form__label'>
             E-mail
-            <input name='name' type='text' className='auth-form__input' placeholder='Ваш e-mail'></input>
+            <input id='email' type='text' className='auth-form__input' placeholder='Ваш e-mail'></input>
           </label>
-          <label htmlFor='name' className='auth-form__label'>
+          <label htmlFor='password' className='auth-form__label'>
             Пароль
-            <input name='name' type='password' className='auth-form__input auth-form__input_password' placeholder='Ваш пароль'></input>
+            <input id='password' type='password' className='auth-form__input auth-form__input_password' placeholder='Ваш пароль'></input>
             <span className="auth-form__error-message auth-form__error-message_invisible">Что-то пошло не так...</span>
           </label>
           <button type='submit' className='auth-form__button'>{buttonText}</button>

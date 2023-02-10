@@ -6,7 +6,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
   .burger-menu__nav {
     position: fixed;
     right: 0;
@@ -125,10 +125,10 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 320px) {
   .burger-menu__button {
     width: 22px;
-    height: 20, 5px;
+    height: 20.5px;
   }
 
   .burger-menu__nav-links {

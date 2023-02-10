@@ -8,6 +8,7 @@ import Promo from "../Promo/Promo";
 import Menu from '../Menu/Menu'
 import Techs from "../Techs/Techs";
 import HeaderLanding from '../HeaderLanding/HeaderLanding';
+import Footer from '../Footer/Footer'
 
 
 function Main() {
@@ -35,6 +36,7 @@ function Main() {
         <AboutMe />
         <Portfolio />
       </main>
+      <Footer />
     </>
 
   )

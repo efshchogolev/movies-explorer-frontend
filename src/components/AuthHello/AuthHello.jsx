@@ -8,7 +8,7 @@ function AuthHello({ helloText }) {
       <Link to='/' className='auth-hello__link'>
         <img src={logoPath} alt="логотип" className='auth-hello__logo' />
       </Link>
-      <p className='auth-hello__text'>{helloText}</p>
+      <h1 className='auth-hello__text'>{helloText}</h1>
     </div >
   )
 }

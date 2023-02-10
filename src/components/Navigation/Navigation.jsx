@@ -5,7 +5,7 @@ function Navigation() {
   return (
     <nav className="navigation">
       <Link className='navigation__link' to='/signup'>Регистрация</Link>
-      <Link to='signin'><button className='navigation__button'>Войти</button></Link>
+      <Link className="navigation__button" to='signin'>Войти</Link>
     </nav>
   )
 }

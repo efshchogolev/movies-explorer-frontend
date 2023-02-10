@@ -1,5 +1,10 @@
 .navigation {
   margin: 0;
+  max-width: 183px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navigation__link {
@@ -14,8 +19,14 @@
 }
 
 .navigation__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #3ddc84;
   border: none;
+  text-decoration: none;
+  color: #000;
+  margin: 0;
   min-width: 76px;
   min-height: 32px;
   border-radius: 3px;
@@ -28,6 +39,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .navigation {
+    max-width: 132px;
+  }
+
   .navigation__link {
     margin-right: 14px;
   }

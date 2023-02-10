@@ -7,7 +7,7 @@ function Profile() {
       <Header></Header>
       <section className='profile'>
         <div className='profile__container'>
-          <p className='profile__hello'>Привет, Виталий!</p>
+          <h1 className='profile__hello'>Привет, Виталий!</h1>
           <div className='profile__data-container'>
             <div className='profile__name-container'>
               <p className='profile__text-title'>Имя</p>

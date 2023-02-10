@@ -56,7 +56,7 @@
   font-weight: 500;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
   .menu__films-container {
     display: none;
   }
