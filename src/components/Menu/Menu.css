@@ -1,0 +1,67 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.menu__films-container {
+  display: flex;
+  align-items: center;
+}
+
+.menu__account-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu__avatar-container {
+  min-width: 30px;
+  min-height: 30px;
+  background-color: #313131;
+  background-image: url(../../images/user-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 6px;
+}
+
+.menu__link {
+  color: #fff;
+  margin-right: 30px;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.menu__link:hover {
+  opacity: 0.8;
+}
+
+.menu__link_account {
+  margin-right: 13px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.menu__link_films {
+  font-size: 13px;
+  line-height: 18px;
+  margin-right: 16px;
+}
+
+.menu__link_avatar {
+  margin: 0;
+}
+
+.menu__link_films_bold {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .menu__films-container {
+    display: none;
+  }
+
+  .menu__account-container {
+    display: none;
+  }
+}

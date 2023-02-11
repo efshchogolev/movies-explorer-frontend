@@ -1,0 +1,130 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 396px;
+  width: 100%;
+}
+
+.auth-form__label {
+  width: 100%;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8b8b8b;
+  margin: 20px 0 0 0;
+}
+
+.auth-form__label:first-child {
+  margin: 0;
+}
+
+.auth-form__input {
+  background-color: #2f2f2f;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  min-height: 46px;
+  margin: 10px 0 0 0;
+  padding: 0 0 0 16px;
+  font-size: 13px;
+  line-height: 16px;
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.auth-form__input_password {
+  color: #fff;
+}
+
+.auth-form__error-message {
+  display: block;
+  margin: 10px 0 0 0;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+}
+
+.auth-form__error-message_invisible {
+  visibility: hidden;
+}
+
+.auth-form__button {
+  width: 100%;
+  background-color: #4285f4;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  min-height: 45px;
+  padding: 0;
+  margin: 69px 0 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.auth-form__button_login {
+  margin-top: 157px;
+}
+
+.auth-form__button:hover {
+  opacity: 0.8;
+}
+
+.auth-form__text {
+  align-self: center;
+  margin: 16px 0 0 0;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+}
+
+.auth-form__link {
+  color: #4285f4;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 0 0 6px;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.auth-form__link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1279px) {
+  .auth-form {
+    padding: 0 0 232px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .auth-form {
+    /* padding: 0 0 232px 0; */
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .auth-form__button {
+    margin: 157px 0 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth-form__text {
+    margin-top: 15px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth-form__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .auth-form__button_login {
+    margin-top: 245px;
+  }
+}

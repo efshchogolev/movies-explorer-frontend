@@ -1,0 +1,27 @@
+.card-list {
+  background-color: #202020;
+  display: grid;
+  padding: 69px 70px 17px 70px;
+  grid-template-columns: repeat(auto-fit, 364px);
+  align-items: center;
+  justify-content: center;
+  gap: 30px 24px;
+  margin: 0;
+  list-style: none;
+}
+
+@media screen and (max-width: 1279px) {
+  .card-list {
+    padding: 69px 30px 17px 30px;
+    gap: 36px 30px;
+    grid-template-columns: repeat(auto-fit, 339px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card-list {
+    padding: 38px 10px 30px 10px;
+    gap: 16px 30px;
+    grid-template-columns: repeat(auto-fit, 300px);
+  }
+}

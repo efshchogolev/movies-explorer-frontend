@@ -1,0 +1,40 @@
+.landing-header {
+  padding: 18px 70px 18px 70px;
+  background-color: #073042;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.landing-header__container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.landing-header__logo {
+  max-width: 38px;
+  max-height: 38px;
+  margin-right: 44px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.landing-header__logo:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1279px) {
+  .landing-header {
+    padding: 18px 30px 18px 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .landing-header {
+    padding: 18px 14px 18px 14px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+}

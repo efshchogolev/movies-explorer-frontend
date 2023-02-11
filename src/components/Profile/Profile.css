@@ -1,0 +1,128 @@
+.profile {
+  background-color: #202020;
+  padding: 74px 0 70px 0;
+}
+
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.profile__hello {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+}
+
+.profile__data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 410px;
+  width: 100%;
+  margin: 123px 0 0 0;
+}
+
+.profile__name-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #424242;
+}
+
+.profile__text-title {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0 0 16px 0;
+}
+
+.profile__text-title_email {
+  margin: 17px 0 0 0;
+}
+
+.profile__text {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0 0 16px 0;
+}
+
+.profile__text_email {
+  margin: 17px 0 0 0;
+}
+
+.profile__email-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__button {
+  margin: 220px 0 0 0;
+  background-color: #202020;
+  border: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profile__button:hover {
+  opacity: 0.8;
+}
+
+.profile__button_exit {
+  color: #ee3465;
+  font-weight: 500;
+  margin: 16px 0 0 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    padding-top: 232px;
+  }
+
+  .profile__data-container {
+    margin-top: 96px;
+  }
+
+  .profile__text-title_email {
+    margin-top: 18px;
+  }
+
+  .profile__button {
+    margin: 211px 0 0 0;
+  }
+
+  .profile__button_exit {
+    margin: 14px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile {
+    padding-top: 67px;
+  }
+
+  .profile__data-container {
+    max-width: 260px;
+    margin-top: 80px;
+  }
+
+  .profile__button {
+    margin: 379px 0 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__button_exit {
+    margin: 16px 0 0 0;
+  }
+}

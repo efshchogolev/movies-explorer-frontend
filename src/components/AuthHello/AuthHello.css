@@ -1,0 +1,48 @@
+.auth-hello {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 70px 0 40px 0;
+  width: 100%;
+}
+
+.auth-hello__logo {
+  max-width: 38px;
+  min-height: 38px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.auth-hello__link {
+  max-height: 38px;
+}
+
+.auth-hello__logo:hover {
+  opacity: 0.8;
+}
+
+.auth-hello__text {
+  padding: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 40px 0 0 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .auth-hello {
+    padding: 232px 0 40px 0;
+  }
+  .auth-hello__text {
+    margin: 40px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .auth-hello {
+    align-items: center;
+    padding: 56px 0 80px 0;
+  }
+  .auth-hello__text {
+    margin: 50px 0 0 0;
+  }
+}
