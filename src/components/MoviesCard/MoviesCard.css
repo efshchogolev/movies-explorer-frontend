@@ -1,7 +1,7 @@
 .card {
   width: 364px;
   height: 271px;
-  /* max-height: 271px; */
+  overflow: hidden;
   background-color: #222;
 }
 .card__info {

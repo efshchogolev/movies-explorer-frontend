@@ -1,10 +1,11 @@
 import './ButtonMore.css'
 import cn from 'classnames'
 
-function ButtonMore({ invisible }) {
+function ButtonMore({ isButtonMoreVisible, handleDisplayMoreMovies }) {
+
   return (
     <div className='more'>
-      <button className={cn('more__button', invisible ? '' : 'more__button_invisible')}>Ещё</button>
+      <button onClick={handleDisplayMoreMovies} className={cn('more__button', isButtonMoreVisible ? '' : 'more__button_invisible')}>Ещё</button>
     </div>
   )
 }

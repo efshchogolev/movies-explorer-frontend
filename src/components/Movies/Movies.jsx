@@ -5,14 +5,47 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 import './Movies.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import Preloader from '../Preloader/Preloader'
 
-function Movies() {
+function Movies({
+  onSearch,
+  moviesList,
+  inputValue,
+  setInputValue,
+  isActiveCheckbox,
+  setIsActiveCheckbox,
+  handleChangeCheckbox,
+  cardListText,
+  preloader,
+  numberOfMovies,
+  // numberOfAddMovies,
+  handleDisplayMoreMovies,
+  isButtonMoreVisible
+}) {
+
+
   return (
     <>
       <Header />
-      <SearchForm />
+      <SearchForm
+        onSearch={onSearch}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        isActiveCheckbox={isActiveCheckbox}
+        // setIsActiveCheckbox={setIsActiveCheckbox}
+        handleChangeCheckbox={handleChangeCheckbox}
+      />
       <MoviesCardList >
-        <MoviesCard button={'card__save'} />
+        <>
+          {moviesList?.slice(0, numberOfMovies).map((card) => (
+            <MoviesCard
+              card={card}
+              key={card._id}
+              button={'card__save'}
+            />
+          ))}
+          <p className={`card-list__text ${moviesList && moviesList?.length && preloader !== 0 ? 'card-list__text_invisible' : ' '}`}>{cardListText}</p>
+          {/* <MoviesCard button={'card__save'} />
         <MoviesCard button={'card__save'} />
         <MoviesCard button={'card__save'} active={true} />
         <MoviesCard button={'card__save'} />
@@ -23,9 +56,11 @@ function Movies() {
         <MoviesCard button={'card__save'} />
         <MoviesCard button={'card__save'} active={true} />
         <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} />
+        <MoviesCard button={'card__save'} /> */}
+          {preloader && <Preloader />}
+        </>
       </MoviesCardList>
-      <ButtonMore invisible={true} />
+      <ButtonMore isButtonMoreVisible={isButtonMoreVisible} handleDisplayMoreMovies={handleDisplayMoreMovies} />
       <Footer />
     </>
   )

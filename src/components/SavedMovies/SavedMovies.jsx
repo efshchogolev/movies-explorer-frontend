@@ -5,18 +5,19 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 import './SavedMovies.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import Preloader from '../Preloader/Preloader'
 
-function SavedMovies() {
+function SavedMovies({ onSearch }) {
   return (
     <>
       <Header />
-      <SearchForm />
+      <SearchForm onSearch={onSearch} />
       <MoviesCardList >
+        {/* <MoviesCard button={'card__delete'} />
         <MoviesCard button={'card__delete'} />
-        <MoviesCard button={'card__delete'} />
-        <MoviesCard button={'card__delete'} />
+        <MoviesCard button={'card__delete'} /> */}
       </MoviesCardList>
-      <ButtonMore visible={false} />
+      <ButtonMore invisible={false} />
       <Footer />
     </>
   )

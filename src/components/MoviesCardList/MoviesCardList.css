@@ -1,4 +1,5 @@
 .card-list {
+  position: relative;
   background-color: #202020;
   display: grid;
   padding: 69px 70px 17px 70px;
@@ -8,6 +9,18 @@
   gap: 30px 24px;
   margin: 0;
   list-style: none;
+}
+
+.card-list__text {
+  line-height: 18px;
+  font-size: 13px;
+  color: #8b8b8b;
+  margin: 0;
+  text-align: center;
+}
+
+.card-list__text_invisible {
+  display: none;
 }
 
 @media screen and (max-width: 1279px) {
