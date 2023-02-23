@@ -1,16 +1,12 @@
 class MainApi {
-  constructor(baseUrl, moviesUrl) {
+  constructor(baseUrl) {
     this._baseUrl = baseUrl;
-    this._moviesUrl = moviesUrl;
 
     this._getJsonOrError = this._getJsonOrError.bind(this);
-    this._getHeaders = this._getHeaders.bind(this);
+    // this._getHeaders = this._getHeaders.bind(this);
   }
 
 
-  // getMovies(data) {
-  //   return fetch(`${this._moviesUrl}`)
-  // }
 
   _getJsonOrError(res) {
     if (res.ok) {
@@ -19,11 +15,40 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+  saveMovie(movie) {
+
+    return fetch(`${this._baseUrl}/movies`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: 'include',
+      body: JSON.stringify(movie)
+    }).then(
+      this._getJsonOrError
+    )
+  }
+
+  register = (name, password, email) => {
+    return fetch(`${this._baseUrl}/signup`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, password, email })
+    })
+      .then(
+        this._getJsonOrError
+      )
+  };
+
 
 }
 
-const api = new MainApi(
-  "https://api.mexplorersh.nomoredomains.club",
+const mainApi = new MainApi(
+  // "https://api.mexplorersh.nomoredomains.club",
+  "http://localhost:3001"
 );
 
-export default api;
+export default mainApi;

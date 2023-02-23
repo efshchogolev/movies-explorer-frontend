@@ -3,17 +3,7 @@ class MoviesApi {
     this._moviesUrl = moviesUrl;
   }
 
-  // _getRequest({ url, method = "POST", data }) {
-  //   return fetch(`${this._baseUrl}${url}`, {
-  //     method,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       // ...(!!token && { Authorization: `Bearer ${token}` }),
-  //     },
-  //     credentials: 'include',
-  //     ...(!!data && { body: JSON.stringify(data) }),
-  //   }).then(this._getJsonOrError);
-  // }
+
   authorize(email, password) {
     return fetch(`${this._moviesUrl}/signin`, {
       method: "POST",
@@ -29,8 +19,8 @@ class MoviesApi {
       return Promise.reject(`Ошибка: ${res.status}`);
     }
     )
-    // return this._getRequest({ url: "/signin", data: { email, password } });
   }
+
   getApiMovies() {
     return fetch(`${this._moviesUrl}/movies`, {
       method: "GET",

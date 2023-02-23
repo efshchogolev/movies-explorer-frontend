@@ -49,6 +49,11 @@
   visibility: hidden;
 }
 
+.auth-form__error-message_api {
+  align-self: center;
+  margin: 47px 0 10px 0;
+}
+
 .auth-form__button {
   width: 100%;
   background-color: #4285f4;
@@ -65,12 +70,23 @@
   cursor: pointer;
 }
 
+.auth-form__button_register {
+  margin: 0;
+}
+
 .auth-form__button_login {
   margin-top: 157px;
 }
 
 .auth-form__button:hover {
   opacity: 0.8;
+}
+
+.auth-form__button:disabled {
+  opacity: 0.8;
+  color: #000;
+  background-color: #fff;
+  cursor: default;
 }
 
 .auth-form__text {
@@ -108,9 +124,13 @@
   }
 
   .auth-form__button {
-    margin: 157px 0 0 0;
+    margin: 0 0 0 0;
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .auth-form__error-message_api {
+    margin: 135px 0 10px 0;
   }
 
   .auth-form__text {

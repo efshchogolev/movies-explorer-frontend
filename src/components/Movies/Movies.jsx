@@ -20,9 +20,21 @@ function Movies({
   numberOfMovies,
   // numberOfAddMovies,
   handleDisplayMoreMovies,
-  isButtonMoreVisible
+  isButtonMoreVisible,
+  onLikeCard
 }) {
 
+  const handleCountDuration = (duration) => {
+    const hours = parseInt((duration / 60))
+    const mins = (duration % 60)
+    if (hours === 0) {
+      return `${mins}м`
+    } else if (mins === 0) {
+      return `${hours}ч`
+    } else {
+      return `${hours}ч ${mins}м`
+    }
+  }
 
   return (
     <>
@@ -42,6 +54,8 @@ function Movies({
               card={card}
               key={card._id}
               button={'card__save'}
+              onCountDuration={handleCountDuration}
+              onLikeCard={onLikeCard}
             />
           ))}
           <p className={`card-list__text ${moviesList && moviesList?.length && preloader !== 0 ? 'card-list__text_invisible' : ' '}`}>{cardListText}</p>

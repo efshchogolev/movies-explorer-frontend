@@ -11,15 +11,16 @@ import NotFound from "../NotFound/NotFound";
 import moviesApi from "../../utils/MoviesApi";
 import Preloader from '../Preloader/Preloader'
 import { useEffect, useState } from "react";
+import mainApi from "../../utils/MainApi";
 
 function App() {
-
   const [preloader, setPreloader] = useState(false);
   // const [localMovies, setLocalMovies] = useState([])
   const [inputValue, setInputValue] = useState('');
   // debugger
   // const [isShortFilm, setIsShortFilm] = useState(false)
-  const [isActiveCheckbox, setIsActiveCheckbox] = useState(JSON.parse(localStorage.getItem('isShortFilm')))
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isActiveCheckbox, setIsActiveCheckbox] = useState(JSON.parse(localStorage.getItem('isShortFilm')) || false)
   const [filteredMovies, setFilteredMovies] = useState([])
   const [cardListText, setCardListText] = useState('Введите название фильма')
   const [numberOfMovies, setNumberOfMovies] = useState(12)
@@ -28,6 +29,7 @@ function App() {
 
   useEffect(() => {
     moviesApi.authorize("alex-5654929@mail.ru", "password")
+    console.log('авторизация')
     if (localStorage.getItem('beatFilm')) {
       handleCheckWidth()
       setInputValue(JSON.parse(localStorage.getItem('inputValue')))
@@ -59,7 +61,7 @@ function App() {
 
   useEffect(() => {
 
-    if (numberOfMovies >= JSON.parse(localStorage.getItem('filteredMovies')).length) {
+    if (numberOfMovies >= JSON.parse(localStorage.getItem('filteredMovies'))?.length) {
       setIsButtonMoreVisible(false)
     } else {
       setIsButtonMoreVisible(true)
@@ -137,7 +139,6 @@ function App() {
       setFilteredMovies(handleFilter(JSON.parse(localStorage.getItem("beatFilm")), inputValue, isActiveCheckbox))
 
     }
-    // setPreloader(false)
     localStorage.setItem('inputValue', JSON.stringify(inputValue))
     localStorage.setItem('isShortFilm', JSON.stringify(isActiveCheckbox))
 
@@ -162,6 +163,28 @@ function App() {
     setNumberOfMovies(numberOfMovies + numberOfAddMovies)
   }
 
+  const handleLikeCard = (movie) => {
+    console.log(movie)
+    mainApi.saveMovie(movie)
+      // .then((movie) => {
+      //   setCards((state) =>
+      //     state.map((c) => (c._id === card._id ? newCard : c))
+      //   );
+      // })
+      .catch((err) => console.log(err));
+
+  }
+
+  const handleRegister = (data) => {
+    setErrorMessage("")
+    mainApi.register(data.username, data.password, data.email)
+      .catch((err) => {
+        console.log(err)
+        setErrorMessage("Такой пользователь уже зарегестрирован")
+      })
+  }
+
+
   return (
     <div className="app">
       <Routes>
@@ -184,6 +207,7 @@ function App() {
               numberOfAddMovies={numberOfAddMovies}
               handleDisplayMoreMovies={handleDisplayMoreMovies}
               isButtonMoreVisible={isButtonMoreVisible}
+              onLikeCard={handleLikeCard}
             />
 
           </>
@@ -201,7 +225,7 @@ function App() {
           <Login />
         } />
         <Route path="/signup" element={
-          <Register />
+          <Register onRegister={handleRegister} errorMessage={errorMessage} />
         }
         />
         <Route path="*" element={
