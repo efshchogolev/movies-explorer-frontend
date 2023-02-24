@@ -16,14 +16,26 @@ class MainApi {
   }
 
   saveMovie(movie) {
-
+    console.log(movie)
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: 'include',
-      body: JSON.stringify(movie)
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        image: movie.image,
+        trailerLink: movie.trailerLink,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+        thumbnail: movie.thumbnail,
+        movieId: movie.movieId,
+      })
     }).then(
       this._getJsonOrError
     )
@@ -96,8 +108,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi(
-  // "https://api.mexplorersh.nomoredomains.club",
-  "http://localhost:3001"
+  "https://api.mexplorersh.nomoredomains.club",
+  // "http://localhost:3001"
 );
 
 export default mainApi;

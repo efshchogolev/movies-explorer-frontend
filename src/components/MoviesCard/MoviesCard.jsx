@@ -1,8 +1,9 @@
 import './MoviesCard.css'
 import cn from 'classnames'
 import imagePath from '../../images/movie-image.png'
+import { Link } from 'react-router-dom'
 
-function MoviesCard({ active, button, card, onCountDuration, onLikeCard }) {
+function MoviesCard({ active, button, card, onCountDuration, onLikeCard, trailerLink }) {
   const handleLikeCard = () => {
     onLikeCard(card)
   }
@@ -14,7 +15,9 @@ function MoviesCard({ active, button, card, onCountDuration, onLikeCard }) {
         <p className='card__time'>{onCountDuration(card.duration)}</p>
         <button className={cn(button, active ? 'card__save_active' : '')} onClick={handleLikeCard}></button>
       </div>
-      <img className='card__image' alt="Миниатюрное изображение фильма" src={card.thumbnail} />
+      <a href={trailerLink}>
+        <img className='card__image' alt="Миниатюрное изображение фильма" src={card.thumbnail} />
+      </a>
     </li>
   )
 }

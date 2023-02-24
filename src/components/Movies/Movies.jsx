@@ -6,6 +6,8 @@ import './Movies.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Preloader from '../Preloader/Preloader'
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from 'react';
 
 function Movies({
   onSearch,
@@ -23,6 +25,7 @@ function Movies({
   isButtonMoreVisible,
   onLikeCard
 }) {
+  const currentUser = useContext(CurrentUserContext)
 
   const handleCountDuration = (duration) => {
     const hours = parseInt((duration / 60))
@@ -36,6 +39,8 @@ function Movies({
     }
   }
 
+  // const isLiked = card.likes.some((i) => i === currentUser._id);
+
   return (
     <>
       <Header />
@@ -44,33 +49,22 @@ function Movies({
         inputValue={inputValue}
         setInputValue={setInputValue}
         isActiveCheckbox={isActiveCheckbox}
-        // setIsActiveCheckbox={setIsActiveCheckbox}
         handleChangeCheckbox={handleChangeCheckbox}
       />
       <MoviesCardList >
         <>
           {moviesList?.slice(0, numberOfMovies).map((card) => (
             <MoviesCard
+              trailerLink={card.trailerLink}
               card={card}
               key={card._id}
               button={'card__save'}
               onCountDuration={handleCountDuration}
               onLikeCard={onLikeCard}
+            // isLiked={isLiked}
             />
           ))}
           <p className={`card-list__text ${moviesList && moviesList?.length && preloader !== 0 ? 'card-list__text_invisible' : ' '}`}>{cardListText}</p>
-          {/* <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} active={true} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} active={true} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} active={true} />
-        <MoviesCard button={'card__save'} />
-        <MoviesCard button={'card__save'} /> */}
           {preloader && <Preloader />}
         </>
       </MoviesCardList>

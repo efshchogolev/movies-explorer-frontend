@@ -5,7 +5,7 @@ class MoviesApi {
 
 
   getApiMovies() {
-    return fetch(`${this._moviesUrl}/movies`, {
+    return fetch(`${this._moviesUrl}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -26,9 +26,9 @@ class MoviesApi {
 }
 
 const moviesApi = new MoviesApi(
-  // "https://api.nomoreparties.co/beatfilm-movies"
+  "https://api.nomoreparties.co/beatfilm-movies"
   // "https://api.mexplorersh.nomoredomains.club"
-  "http://localhost:3001"
+  // "http://localhost:3001"
 );
 
 export default moviesApi;

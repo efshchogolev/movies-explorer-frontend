@@ -64,7 +64,6 @@ function App() {
   }, [filteredMovies])
 
   useEffect(() => {
-    debugger
     mainApi.getUserInfoFromServer()
       .then((data) => {
         setCurrentUser(data);
@@ -252,7 +251,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser} >
         <Routes>
           <Route path="/" element={
-            <Main />
+            <Main isLoggedIn={isLoggedIn} />
           } />
           <Route path="/signin" element={
             <Login onLogin={handleLogin} />
