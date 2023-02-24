@@ -196,7 +196,8 @@ function App() {
     setErrorMessage("")
     mainApi.register(data.username, data.password, data.email)
       .then((res) => {
-        handleLogin(data.email, data.password)
+        console.log(data)
+        handleLogin(data)
       })
       .catch((err) => {
         console.log(err)
@@ -254,7 +255,7 @@ function App() {
             <Main isLoggedIn={isLoggedIn} />
           } />
           <Route path="/signin" element={
-            <Login onLogin={handleLogin} />
+            <Login onLogin={handleLogin} errorMessage={errorMessage} />
           } />
           <Route path="/signup" element={
             <Register onRegister={handleRegister} errorMessage={errorMessage} />
