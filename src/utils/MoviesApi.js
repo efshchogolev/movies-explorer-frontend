@@ -4,23 +4,6 @@ class MoviesApi {
   }
 
 
-  authorize(email, password) {
-    return fetch(`${this._moviesUrl}/signin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: 'include',
-      body: JSON.stringify({ email, password })
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
-    )
-  }
-
   getApiMovies() {
     return fetch(`${this._moviesUrl}/movies`, {
       method: "GET",

@@ -1,6 +1,6 @@
 
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Main from '../Main/Main'
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -12,6 +12,8 @@ import moviesApi from "../../utils/MoviesApi";
 import Preloader from '../Preloader/Preloader'
 import { useEffect, useState } from "react";
 import mainApi from "../../utils/MainApi";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [preloader, setPreloader] = useState(false);
@@ -20,16 +22,18 @@ function App() {
   // debugger
   // const [isShortFilm, setIsShortFilm] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
   const [isActiveCheckbox, setIsActiveCheckbox] = useState(JSON.parse(localStorage.getItem('isShortFilm')) || false)
   const [filteredMovies, setFilteredMovies] = useState([])
   const [cardListText, setCardListText] = useState('Введите название фильма')
   const [numberOfMovies, setNumberOfMovies] = useState(12)
   const [numberOfAddMovies, setNumberOfAddMovies] = useState(3)
   const [isButtonMoreVisible, setIsButtonMoreVisible] = useState(false)
+  const [profileMessage, setProfileMessage] = useState('')
+  const navigate = useNavigate()
 
   useEffect(() => {
-    moviesApi.authorize("alex-5654929@mail.ru", "password")
-    console.log('авторизация')
     if (localStorage.getItem('beatFilm')) {
       handleCheckWidth()
       setInputValue(JSON.parse(localStorage.getItem('inputValue')))
@@ -60,6 +64,24 @@ function App() {
   }, [filteredMovies])
 
   useEffect(() => {
+    debugger
+    mainApi.getUserInfoFromServer()
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => console.log(err));
+  }, [isLoggedIn])
+
+  useEffect(() => {
+    mainApi.getUserInfoFromServer().then((res) => {
+      if (res) {
+        setIsLoggedIn(true);
+        navigate("/movies");
+      }
+    });
+  }, [isLoggedIn]);
+
+  useEffect(() => {
 
     if (numberOfMovies >= JSON.parse(localStorage.getItem('filteredMovies'))?.length) {
       setIsButtonMoreVisible(false)
@@ -67,11 +89,7 @@ function App() {
       setIsButtonMoreVisible(true)
     }
 
-    // setIsActiveCheckbox(JSON.parse(localStorage.getItem('isShortFilm')))
-    // console.log(`Отображаемых ${numberOfMovies}`)
-    // console.log(`стейт фильтрованных ${filteredMovies.length}`)
-    // console.log(`в хранилище ${JSON.parse(localStorage.getItem('filteredMovies')).length}`)
-  }, [numberOfMovies, filteredMovies]) //????
+  }, [numberOfMovies, filteredMovies])
 
   function handleChangeCheckbox(e) {
     setIsActiveCheckbox(e.target.checked)
@@ -178,60 +196,112 @@ function App() {
   const handleRegister = (data) => {
     setErrorMessage("")
     mainApi.register(data.username, data.password, data.email)
+      .then((res) => {
+        handleLogin(data.email, data.password)
+      })
       .catch((err) => {
         console.log(err)
         setErrorMessage("Такой пользователь уже зарегестрирован")
       })
   }
 
+  const handleLogin = (data) => {
+    setErrorMessage('')
+    mainApi.login(data.email, data.password)
+      .then((res) => {
+        setIsLoggedIn(true)
+        navigate('/movies')
+      })
+      .catch((err) => {
+        setErrorMessage("Неверный email или пароль")
+        console.log(err)
+      })
+  }
+
+  const handleChangeProfile = (data) => {
+    setProfileMessage('')
+    console.log(data)
+    mainApi.setUserInfo(data.username, data.email)
+      .then(() => {
+        setCurrentUser(data.username, data.email)
+      })
+      .then(() => {
+        setProfileMessage('Данные успешно изменены')
+      })
+      .catch((err) => {
+        console.log(err)
+        setProfileMessage('Произошла ошибка')
+      })
+  }
+
+  const handleLogout = () => {
+    mainApi.logout()
+      .then(() => {
+        setCurrentUser({ name: "", email: "" })
+        setIsLoggedIn(false)
+        navigate('/')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
 
   return (
     <div className="app">
-      <Routes>
-        <Route path="/" element={
-          <Main />
-        } />
-        <Route path="/movies" element={
-          <>
-            <Movies
-              onSearch={handleSearch}
-              moviesList={filteredMovies}
-              inputValue={inputValue}
-              isActiveCheckbox={isActiveCheckbox}
-              setInputValue={setInputValue}
-              setIsActiveCheckbox={setIsActiveCheckbox}
-              handleChangeCheckbox={handleChangeCheckbox}
-              cardListText={cardListText}
-              preloader={preloader}
-              numberOfMovies={numberOfMovies}
-              numberOfAddMovies={numberOfAddMovies}
-              handleDisplayMoreMovies={handleDisplayMoreMovies}
-              isButtonMoreVisible={isButtonMoreVisible}
-              onLikeCard={handleLikeCard}
-            />
+      <CurrentUserContext.Provider value={currentUser} >
+        <Routes>
+          <Route path="/" element={
+            <Main />
+          } />
+          <Route path="/signin" element={
+            <Login onLogin={handleLogin} />
+          } />
+          <Route path="/signup" element={
+            <Register onRegister={handleRegister} errorMessage={errorMessage} />
+          }
+          />
+          <Route path="*" element={
+            <NotFound />
+          } />
+          <Route element={<ProtectedRoute loggedIn={isLoggedIn} />}>
+            <Route path="/movies" element={
+              <>
+                <Movies
+                  onSearch={handleSearch}
+                  moviesList={filteredMovies}
+                  inputValue={inputValue}
+                  isActiveCheckbox={isActiveCheckbox}
+                  setInputValue={setInputValue}
+                  setIsActiveCheckbox={setIsActiveCheckbox}
+                  handleChangeCheckbox={handleChangeCheckbox}
+                  cardListText={cardListText}
+                  preloader={preloader}
+                  numberOfMovies={numberOfMovies}
+                  numberOfAddMovies={numberOfAddMovies}
+                  handleDisplayMoreMovies={handleDisplayMoreMovies}
+                  isButtonMoreVisible={isButtonMoreVisible}
+                  onLikeCard={handleLikeCard}
+                />
 
-          </>
-        } />
-        <Route path="/saved-movies" element={
-          <>
-            <SavedMovies onSearch={handleSearch} isLoading={preloader} inputValue={inputValue} setInputValue={setInputValue} />
-            {preloader && <Preloader />}
-          </>
-        } />
-        <Route path="/profile" element={
-          <Profile />
-        } />
-        <Route path="/signin" element={
-          <Login />
-        } />
-        <Route path="/signup" element={
-          <Register onRegister={handleRegister} errorMessage={errorMessage} />
-        }
-        />
-        <Route path="*" element={
-          <NotFound />
-        } />
-      </Routes>
+              </>
+            } />
+            <Route path="/saved-movies" element={
+              <>
+                <SavedMovies onSearch={handleSearch} isLoading={preloader} inputValue={inputValue} setInputValue={setInputValue} />
+                {preloader && <Preloader />}
+              </>
+            } />
+            <Route path="/profile" element={
+              <Profile
+                onChangeProfile={handleChangeProfile}
+                profileMessage={profileMessage}
+                handleLogout={handleLogout}
+              />
+            } />
+          </Route>
+        </Routes>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
