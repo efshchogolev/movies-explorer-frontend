@@ -16,6 +16,7 @@ class MainApi {
   }
 
   saveMovie(movie) {
+    console.log(movie)
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
       headers: {
@@ -41,8 +42,8 @@ class MainApi {
   }
 
 
-  deleteMovie(movie) {
-    return fetch(`${this._baseUrl}/movies/${movie.id}`, {
+  deleteMovie(id) {
+    return fetch(`${this._baseUrl}/movies/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

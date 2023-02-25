@@ -6,8 +6,6 @@ import './Movies.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Preloader from '../Preloader/Preloader'
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext } from 'react';
 
 function Movies({
   onSearch,
@@ -20,27 +18,14 @@ function Movies({
   cardListText,
   preloader,
   numberOfMovies,
-  // numberOfAddMovies,
   handleDisplayMoreMovies,
   isButtonMoreVisible,
   onLikeCard,
-  savedMovies
+  savedMovies,
+  onCountDuration
 }) {
-  const currentUser = useContext(CurrentUserContext)
 
-  const handleCountDuration = (duration) => {
-    const hours = parseInt((duration / 60))
-    const mins = (duration % 60)
-    if (hours === 0) {
-      return `${mins}м`
-    } else if (mins === 0) {
-      return `${hours}ч`
-    } else {
-      return `${hours}ч ${mins}м`
-    }
-  }
 
-  // const isLiked = card.likes.some((i) => i === currentUser._id);
 
   return (
     <>
@@ -60,10 +45,11 @@ function Movies({
               card={card}
               key={card.id}
               button={'card__save'}
-              onCountDuration={handleCountDuration}
+              onCountDuration={onCountDuration}
               onLikeCard={onLikeCard}
+              cardImage={`https://api.nomoreparties.co${card.image.url}`}
               savedMovies={savedMovies}
-            // isLiked={isLiked}
+              isSavedMoviesPage={false}
             />
           ))}
           <p className={`card-list__text ${moviesList && moviesList?.length && preloader !== 0 ? 'card-list__text_invisible' : ' '}`}>{cardListText}</p>

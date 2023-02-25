@@ -1,21 +1,27 @@
 import './MoviesCard.css'
 import cn from 'classnames'
-import imagePath from '../../images/movie-image.png'
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from "react";
 
 function MoviesCard({
-  active,
   button,
   card,
   onCountDuration,
   onLikeCard,
   trailerLink,
-  savedMovies }) {
+  savedMovies,
+  cardImage,
+  isSavedMoviesPage,
+  onDeleteMovie
+}) {
   const handleLikeCard = () => {
-    console.log(card)
+    // console.log(card)
     onLikeCard(card)
   }
+
+  const handleDeleteCard = () => {
+    console.log(card)
+    onDeleteMovie(card.movieId)
+  }
+
   let isSaved = savedMovies.some((m) =>
     m.movieId === card.id
   )
@@ -25,10 +31,14 @@ function MoviesCard({
       <div className='card__info'>
         <p className='card__name'>{card.nameRU}</p>
         <p className='card__time'>{onCountDuration(card.duration)}</p>
-        <button className={cn(button, isSaved ? 'card__save_active' : '')} onClick={handleLikeCard}></button>
+        {!isSavedMoviesPage
+          ?
+          <button className={`card__save ${isSaved ? 'card__save_active' : ''}`} onClick={handleLikeCard}></button>
+          :
+          <button className='card__delete' onClick={handleDeleteCard}></button>}
       </div>
       <a href={trailerLink}>
-        <img className='card__image' alt="Миниатюрное изображение фильма" src={`https://api.nomoreparties.co${card.image.url}`} />
+        <img className='card__image' alt="Миниатюрное изображение фильма" src={cardImage} />
       </a>
     </li>
   )

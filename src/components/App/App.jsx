@@ -194,7 +194,7 @@ function App() {
     )
     if (isSaved) {
       console.log('фильм уже сохранён')
-      handleDeleteMovie(movie)
+      handleDeleteMovie(movie.id)
     } else {
       handleSaveMovie(movie)
     }
@@ -211,13 +211,12 @@ function App() {
       })
   }
 
-  const handleDeleteMovie = (movie) => {
-    mainApi.deleteMovie(movie)
+  const handleDeleteMovie = (id) => {
+    mainApi.deleteMovie(id)
       .then((res) => {
         const newSavedMovies = savedMovies.filter((m) => {
           console.log(m)
-          console.log(movie)
-          return m.movieId !== movie.id
+          return m.movieId !== id
         })
         setSavedMovies(newSavedMovies)
         localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
@@ -279,6 +278,17 @@ function App() {
       })
   }
 
+  const handleCountDuration = (duration) => {
+    const hours = parseInt((duration / 60))
+    const mins = (duration % 60)
+    if (hours === 0) {
+      return `${mins}м`
+    } else if (mins === 0) {
+      return `${hours}ч`
+    } else {
+      return `${hours}ч ${mins}м`
+    }
+  }
 
   return (
     <div className="app">
@@ -316,13 +326,19 @@ function App() {
                   isButtonMoreVisible={isButtonMoreVisible}
                   onLikeCard={handleLikeCard}
                   savedMovies={savedMovies}
+                  onCountDuration={handleCountDuration}
                 />
 
               </>
             } />
             <Route path="/saved-movies" element={
               <>
-                <SavedMovies onSearch={handleSearch} isLoading={preloader} inputValue={inputValue} setInputValue={setInputValue} />
+                <SavedMovies
+                  onSearch={handleSearch}
+                  savedMovies={savedMovies}
+                  onCountDuration={handleCountDuration}
+                  onDeleteMovie={handleDeleteMovie}
+                />
                 {preloader && <Preloader />}
               </>
             } />
