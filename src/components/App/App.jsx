@@ -26,6 +26,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
   const [isActiveCheckbox, setIsActiveCheckbox] = useState(JSON.parse(localStorage.getItem('isShortFilm')) || false)
+  const [savedMoviesCheckbox, setSavedMoviesCheckbox] = useState(false)
   const [filteredMovies, setFilteredMovies] = useState([])
   const [cardListText, setCardListText] = useState('Введите название фильма')
   const [numberOfMovies, setNumberOfMovies] = useState(12)
@@ -51,6 +52,10 @@ function App() {
     setFilteredMovies(handleFilter(JSON.parse(localStorage.getItem('localMovies')), false, isActiveCheckbox))
     // localStorage.setItem('isShortFilm', JSON.stringify(isActiveCheckbox))
   }, [isActiveCheckbox])
+
+  useEffect(() => {
+    setSavedMovies(handleFilter(JSON.parse(localStorage.getItem('savedMovies')), false, savedMoviesCheckbox))
+  }, [savedMoviesCheckbox])
 
   useEffect(() => {
     setCardListText('')
@@ -104,10 +109,9 @@ function App() {
 
   const handleFilter = (movies, keyWord, isActiveCheckbox) => {
 
-    if (typeof keyWord == "string") {
-      movies = movies.filter(({ nameRU, nameEN }) => {
-        return nameRU.toLowerCase().includes(keyWord.toLowerCase()) || nameEN.toLowerCase().includes(keyWord.toLowerCase())
-      })
+    if (keyWord) {
+      movies = movies.filter(({ nameRU, nameEN }) => (nameRU.toLowerCase().includes(keyWord.toLowerCase()) || nameEN.toLowerCase().includes(keyWord.toLowerCase()))
+      )
       localStorage.setItem('localMovies', JSON.stringify(movies))
     }
 
@@ -160,12 +164,19 @@ function App() {
           console.log(preloader)
         });
     } else {
+
       setFilteredMovies(handleFilter(JSON.parse(localStorage.getItem("beatFilm")), inputValue, isActiveCheckbox))
 
     }
     localStorage.setItem('inputValue', JSON.stringify(inputValue))
     localStorage.setItem('isShortFilm', JSON.stringify(isActiveCheckbox))
 
+  }
+
+  const handleSavedSearch = (inputValue) => {
+    if (localStorage.getItem('savedMovies')) {
+      setSavedMovies(handleFilter(JSON.parse(localStorage.getItem('savedMovies')), inputValue, isActiveCheckbox))
+    }
   }
 
   const handleCheckWidth = () => {
@@ -290,6 +301,11 @@ function App() {
     }
   }
 
+  const handleChangeSavedCheckbox = (e) => {
+    setSavedMoviesCheckbox(e.target.checked)
+    console.log(savedMoviesCheckbox)
+  }
+
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser} >
@@ -334,7 +350,13 @@ function App() {
             <Route path="/saved-movies" element={
               <>
                 <SavedMovies
-                  onSearch={handleSearch}
+                  onSearch={handleSavedSearch}
+                  inputValue={inputValue}
+                  savedMoviesCheckbox={savedMoviesCheckbox}
+                  setInputValue={setInputValue}
+                  onChangeSavedCheckbox={handleChangeSavedCheckbox}
+                  // handleChangeCheckbox={handleChangeCheckbox}
+                  //
                   savedMovies={savedMovies}
                   onCountDuration={handleCountDuration}
                   onDeleteMovie={handleDeleteMovie}

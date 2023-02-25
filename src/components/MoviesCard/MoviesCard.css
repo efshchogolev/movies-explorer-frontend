@@ -21,6 +21,10 @@
   line-height: 18px;
   margin: 0;
   grid-area: name;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 270px;
 }
 
 .card__time {

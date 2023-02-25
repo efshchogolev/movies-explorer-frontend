@@ -6,11 +6,27 @@ import './SavedMovies.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-function SavedMovies({ onSearch, savedMovies, onCountDuration, onDeleteMovie }) {
+function SavedMovies({
+  onSearch,
+  savedMovies,
+  onCountDuration,
+  onDeleteMovie,
+  inputValue,
+  setInputValue,
+  savedMoviesCheckbox,
+  onChangeSavedCheckbox
+}) {
   return (
     <>
       <Header />
-      <SearchForm onSearch={onSearch} />
+      <SearchForm
+        onSearch={onSearch}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        isActiveCheckbox={savedMoviesCheckbox}
+        savedMovies={savedMovies}
+        handleChangeCheckbox={onChangeSavedCheckbox}
+      />
       <MoviesCardList >
         {savedMovies?.map((card) => (
           <MoviesCard
@@ -26,9 +42,6 @@ function SavedMovies({ onSearch, savedMovies, onCountDuration, onDeleteMovie }) 
             onDeleteMovie={onDeleteMovie}
           />
         ))}
-        {/* <MoviesCard button={'card__delete'} />
-        <MoviesCard button={'card__delete'} />
-        <MoviesCard button={'card__delete'} /> */}
       </MoviesCardList>
       <ButtonMore invisible={false} />
       <Footer />

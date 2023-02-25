@@ -2,7 +2,7 @@
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import './SearchForm.css'
 
-function SearchForm({ onSearch, inputValue, setInputValue, isActiveCheckbox, handleChangeCheckbox }) {
+function SearchForm({ savedMovies, onSearch, inputValue, setInputValue, isActiveCheckbox, handleChangeCheckbox }) {
 
 
   function handleChangeInput(e) {
@@ -11,6 +11,7 @@ function SearchForm({ onSearch, inputValue, setInputValue, isActiveCheckbox, han
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(inputValue)
+    console.log(savedMovies)
   }
 
 
