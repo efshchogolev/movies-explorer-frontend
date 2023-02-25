@@ -21,6 +21,7 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   // debugger
   // const [isShortFilm, setIsShortFilm] = useState(false)
+  const [savedMovies, setSavedMovies] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
@@ -67,18 +68,24 @@ function App() {
     mainApi.getUserInfoFromServer()
       .then((data) => {
         setCurrentUser(data);
+        setIsLoggedIn(true)
+        navigate("/movies");
       })
       .catch((err) => console.log(err));
   }, [isLoggedIn])
 
   useEffect(() => {
-    mainApi.getUserInfoFromServer().then((res) => {
-      if (res) {
-        setIsLoggedIn(true);
-        navigate("/movies");
-      }
-    });
-  }, [isLoggedIn]);
+    if (isLoggedIn) {
+      mainApi.getMovies()
+        .then((data) => {
+          setSavedMovies(data)
+          localStorage.setItem('savedMovies', JSON.stringify(data))
+        })
+        .catch((err) => console.log(err));
+    }
+
+  }, [isLoggedIn])
+
 
   useEffect(() => {
 
@@ -181,15 +188,41 @@ function App() {
   }
 
   const handleLikeCard = (movie) => {
-    console.log(movie)
-    mainApi.saveMovie(movie)
-      // .then((movie) => {
-      //   setCards((state) =>
-      //     state.map((c) => (c._id === card._id ? newCard : c))
-      //   );
-      // })
-      .catch((err) => console.log(err));
+    console.log(savedMovies)
+    const isSaved = savedMovies.find((m) =>
+      m.movieId === movie.id
+    )
+    if (isSaved) {
+      console.log('фильм уже сохранён')
+      handleDeleteMovie(movie)
+    } else {
+      handleSaveMovie(movie)
+    }
+    console.log(savedMovies)
 
+  }
+
+  const handleSaveMovie = (movie) => {
+    mainApi.saveMovie(movie)
+      .then((res) => {
+        console.log(res)
+        setSavedMovies((prev) => ([...prev, res]))
+        localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+      })
+  }
+
+  const handleDeleteMovie = (movie) => {
+    mainApi.deleteMovie(movie)
+      .then((res) => {
+        const newSavedMovies = savedMovies.filter((m) => {
+          console.log(m)
+          console.log(movie)
+          return m.movieId !== movie.id
+        })
+        setSavedMovies(newSavedMovies)
+        localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+      })
+      .catch((err) => console.log(err));
   }
 
   const handleRegister = (data) => {
@@ -282,6 +315,7 @@ function App() {
                   handleDisplayMoreMovies={handleDisplayMoreMovies}
                   isButtonMoreVisible={isButtonMoreVisible}
                   onLikeCard={handleLikeCard}
+                  savedMovies={savedMovies}
                 />
 
               </>

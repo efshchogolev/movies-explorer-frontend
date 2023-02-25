@@ -23,7 +23,8 @@ function Movies({
   // numberOfAddMovies,
   handleDisplayMoreMovies,
   isButtonMoreVisible,
-  onLikeCard
+  onLikeCard,
+  savedMovies
 }) {
   const currentUser = useContext(CurrentUserContext)
 
@@ -61,6 +62,7 @@ function Movies({
               button={'card__save'}
               onCountDuration={handleCountDuration}
               onLikeCard={onLikeCard}
+              savedMovies={savedMovies}
             // isLiked={isLiked}
             />
           ))}
