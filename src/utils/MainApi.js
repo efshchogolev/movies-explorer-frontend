@@ -133,8 +133,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi(
-  // "https://api.shchegolef.nomoredomains.club",
-  "http://localhost:3001"
+  "https://api.shchegolef.nomoredomains.club",
+  // "http://localhost:3001"
 );
 
 export default mainApi;
