@@ -57,7 +57,7 @@ function Movies({
             <MoviesCard
               trailerLink={card.trailerLink}
               card={card}
-              key={card._id}
+              key={card.id}
               button={'card__save'}
               onCountDuration={handleCountDuration}
               onLikeCard={onLikeCard}

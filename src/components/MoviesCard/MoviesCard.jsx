@@ -16,7 +16,7 @@ function MoviesCard({ active, button, card, onCountDuration, onLikeCard, trailer
         <button className={cn(button, active ? 'card__save_active' : '')} onClick={handleLikeCard}></button>
       </div>
       <a href={trailerLink}>
-        <img className='card__image' alt="Миниатюрное изображение фильма" src={card.thumbnail} />
+        <img className='card__image' alt="Миниатюрное изображение фильма" src={`https://api.nomoreparties.co${card.image.url}`} />
       </a>
     </li>
   )

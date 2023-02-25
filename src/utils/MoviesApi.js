@@ -5,12 +5,11 @@ class MoviesApi {
 
 
   getApiMovies() {
-    return fetch(`${this._moviesUrl}`, {
+    return fetch(`${this._moviesUrl}/beatfilm-movies`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: 'include',
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -26,7 +25,7 @@ class MoviesApi {
 }
 
 const moviesApi = new MoviesApi(
-  "https://api.nomoreparties.co/beatfilm-movies"
+  "https://api.nomoreparties.co"
   // "https://api.mexplorersh.nomoredomains.club"
   // "http://localhost:3001"
 );

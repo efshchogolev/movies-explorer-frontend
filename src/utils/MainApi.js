@@ -108,7 +108,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi(
-  "https://api.mexplorersh.nomoredomains.club",
+  "https://api.shchegolef.nomoredomains.club",
   // "http://localhost:3001"
 );
 
