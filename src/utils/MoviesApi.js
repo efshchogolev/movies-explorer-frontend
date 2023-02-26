@@ -3,7 +3,6 @@ class MoviesApi {
     this._moviesUrl = moviesUrl;
   }
 
-
   getApiMovies() {
     return fetch(`${this._moviesUrl}/beatfilm-movies`, {
       method: "GET",
@@ -15,13 +14,8 @@ class MoviesApi {
         return res.json();
       }
       return Promise.reject(`Ошибка: ${res.status}`);
-    }
-    )
+    });
   }
-
-
-
-
 }
 
 const moviesApi = new MoviesApi(

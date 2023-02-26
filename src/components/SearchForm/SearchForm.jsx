@@ -1,34 +1,45 @@
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import "./SearchForm.css";
 
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
-import './SearchForm.css'
-
-function SearchForm({ savedMovies, onSearch, inputValue, setInputValue, isActiveCheckbox, handleChangeCheckbox }) {
-
-
+function SearchForm({
+  savedMovies,
+  onSearch,
+  inputValue,
+  setInputValue,
+  isActiveCheckbox,
+  handleChangeCheckbox,
+}) {
   function handleChangeInput(e) {
     setInputValue(e.target.value);
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(inputValue)
-    console.log(savedMovies)
-  }
-
-
+    onSearch(inputValue);
+    console.log(savedMovies);
+  };
 
   return (
-    <div className='search'>
-      <div className='search__container'>
-        <form className='search__form' onSubmit={handleSubmit}>
-          <div className='search__form-container'>
-            <input className='search__input' placeholder='Фильм' required value={inputValue || ''} onChange={handleChangeInput}></input>
-            <button className='search__find-button'></button>
+    <div className="search">
+      <div className="search__container">
+        <form className="search__form" onSubmit={handleSubmit}>
+          <div className="search__form-container">
+            <input
+              className="search__input"
+              placeholder="Фильм"
+              required
+              value={inputValue || ""}
+              onChange={handleChangeInput}
+            ></input>
+            <button className="search__find-button"></button>
           </div>
-          <FilterCheckbox isActiveCheckbox={isActiveCheckbox} handleChangeCheckbox={handleChangeCheckbox} />
+          <FilterCheckbox
+            isActiveCheckbox={isActiveCheckbox}
+            handleChangeCheckbox={handleChangeCheckbox}
+          />
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default SearchForm
+export default SearchForm;
