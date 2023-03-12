@@ -2,27 +2,20 @@ import { Link } from "react-router-dom";
 import "./BurgerMenu.css";
 import { useState } from "react";
 
-function BurgerMenu() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  function handleToggleMenu() {
-    setMenuOpen(!isMenuOpen);
-    console.log(isMenuOpen);
-  }
+function BurgerMenu({ onOpenMenu, isMenuOpen, setMenuOpen }) {
   return (
     <div className="burger-menu">
-      <button
-        className={`burger-menu__button ${
-          isMenuOpen ? "burger-menu__button_close" : ""
-        }`}
-        onClick={handleToggleMenu}
-      ></button>
+      <button className={`burger-menu__button`} onClick={onOpenMenu}></button>
       <div
         className={`burger-menu__overlay ${
           isMenuOpen ? "burger-menu__overlay_open" : ""
         }`}
       >
         <nav className="burger-menu__nav">
+          <button
+            className={`burger-menu__button burger-menu__button_close`}
+            onClick={onOpenMenu}
+          ></button>
           <ul className="burger-menu__nav-links">
             <li className="burger-menu__list-item">
               <Link className="burger-menu__nav-link" to="/">

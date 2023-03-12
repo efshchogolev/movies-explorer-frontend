@@ -26,7 +26,7 @@ function Movies({
 }) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <SearchForm
         onSearch={onSearch}
         inputValue={inputValue}

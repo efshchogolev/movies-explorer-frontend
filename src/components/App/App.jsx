@@ -1,4 +1,5 @@
 import "./App.css";
+import Header from "../Header/Header";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -24,6 +25,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const [isActiveCheckbox, setIsActiveCheckbox] = useState(
     JSON.parse(localStorage.getItem("isShortFilm")) || false
   );
@@ -158,6 +160,10 @@ function App() {
     },
     true
   );
+
+  function handleToggleMenu() {
+    setMenuOpen(!isMenuOpen);
+  }
 
   const handleSearch = (inputValue) => {
     if (!localStorage.getItem("beatFilm")) {
@@ -350,7 +356,17 @@ function App() {
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/"
+            element={
+              <Main
+                isLoggedIn={isLoggedIn}
+                onOpenMenu={handleToggleMenu}
+                isMenuOpen={isMenuOpen}
+                setMenuOpen={setMenuOpen}
+              />
+            }
+          />
           <Route
             path="/signin"
             element={
@@ -372,6 +388,11 @@ function App() {
               path="/movies"
               element={
                 <>
+                  <Header
+                    onOpenMenu={handleToggleMenu}
+                    isMenuOpen={isMenuOpen}
+                    setMenuOpen={setMenuOpen}
+                  ></Header>
                   <Movies
                     onSearch={handleSearch}
                     moviesList={filteredMovies}
@@ -397,6 +418,11 @@ function App() {
               path="/saved-movies"
               element={
                 <>
+                  <Header
+                    onOpenMenu={handleToggleMenu}
+                    isMenuOpen={isMenuOpen}
+                    setMenuOpen={setMenuOpen}
+                  ></Header>
                   <SavedMovies
                     onSearch={handleSavedSearch}
                     inputValue={inputValue}
@@ -416,11 +442,18 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  onChangeProfile={handleChangeProfile}
-                  profileMessage={profileMessage}
-                  handleLogout={handleLogout}
-                />
+                <>
+                  <Header
+                    onOpenMenu={handleToggleMenu}
+                    isMenuOpen={isMenuOpen}
+                    setMenuOpen={setMenuOpen}
+                  ></Header>
+                  <Profile
+                    onChangeProfile={handleChangeProfile}
+                    profileMessage={profileMessage}
+                    handleLogout={handleLogout}
+                  />
+                </>
               }
             />
           </Route>
