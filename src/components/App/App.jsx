@@ -330,6 +330,9 @@ function App() {
         localStorage.clear();
         setIsLoggedIn(false);
         navigate("/");
+        setFilteredMovies([]);
+        setSavedMovies([]);
+        setIsActiveCheckbox(false);
       })
       .catch((err) => {
         console.log(err);
