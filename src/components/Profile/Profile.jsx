@@ -1,7 +1,7 @@
 import Header from "../Header/Header";
 import "./Profile.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 function Profile({ onChangeProfile, profileMessage, handleLogout }) {
@@ -29,7 +29,6 @@ function Profile({ onChangeProfile, profileMessage, handleLogout }) {
 
   const onChangeProfileSubmit = (data) => {
     onChangeProfile(data);
-    reset();
     setUserEmail(data.email);
     setUserName(data.username);
   };
@@ -44,50 +43,54 @@ function Profile({ onChangeProfile, profileMessage, handleLogout }) {
             className="profile__form"
             onSubmit={handleSubmit(onChangeProfileSubmit)}
           >
-            <label className="profile__label_name profile__label">
-              Имя
-              <input
-                {...register("username", {
-                  required: "Это поле обязательно",
-                  minLength: {
-                    value: 2,
-                    message: "Минимум 2 символа",
-                  },
-                  maxLength: {
-                    value: 30,
-                    message: "Максимум 30 символов",
-                  },
-                  pattern: {
-                    value: NAME_REGEX,
-                    message: "Только кириллица, латиница, пробел или дефис",
-                  },
-                })}
-                name="username"
-                className="profile__input"
-                placeholder="Ваше имя"
-              ></input>
+            <div className="profile__input-container">
+              <label className="profile__label_name profile__label">
+                Имя
+                <input
+                  {...register("username", {
+                    required: "Это поле обязательно",
+                    minLength: {
+                      value: 2,
+                      message: "Минимум 2 символа",
+                    },
+                    maxLength: {
+                      value: 30,
+                      message: "Максимум 30 символов",
+                    },
+                    pattern: {
+                      value: NAME_REGEX,
+                      message: "Только кириллица, латиница, пробел или дефис",
+                    },
+                  })}
+                  name="username"
+                  className="profile__input"
+                  placeholder="Ваше имя"
+                ></input>
+              </label>
               <span className="profile__error-message ">
                 {errors?.username?.message}
               </span>
-            </label>
-            <label className="profile__label profile__label_email">
-              E-mail
-              <input
-                {...register("email", {
-                  required: "Это поле обязательно",
-                  pattern: {
-                    value: EMAIL_REGEX,
-                    message: "Неверный email",
-                  },
-                })}
-                name="email"
-                className="profile__input profile__input_email"
-                placeholder="Ваш email"
-              ></input>
+            </div>
+            <div className="profile__input-container">
+              <label className="profile__label profile__label_email">
+                E-mail
+                <input
+                  {...register("email", {
+                    required: "Это поле обязательно",
+                    pattern: {
+                      value: EMAIL_REGEX,
+                      message: "Неверный email",
+                    },
+                  })}
+                  name="email"
+                  className="profile__input profile__input_email"
+                  placeholder="Ваш email"
+                ></input>
+              </label>
               <span className="profile__error-message ">
                 {errors?.email?.message}
               </span>
-            </label>
+            </div>
             <span
               className={`profile__error-message ${
                 profileMessage === "Данные успешно изменены" &&
