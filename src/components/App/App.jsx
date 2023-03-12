@@ -26,9 +26,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isActiveCheckbox, setIsActiveCheckbox] = useState(
-    JSON.parse(localStorage.getItem("isShortFilm")) || false
-  );
+  const [isActiveCheckbox, setIsActiveCheckbox] = useState(false);
   const [savedMoviesCheckbox, setSavedMoviesCheckbox] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [cardListText, setCardListText] = useState("Введите название фильма");
@@ -39,16 +37,25 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const checkbox = JSON.parse(localStorage.getItem("isShortFilm"));
     if (localStorage.getItem("beatFilm")) {
       handleCheckWidth();
       setInputValue(JSON.parse(localStorage.getItem("inputValue")));
       // console.log(isShortFilm)
-      // setIsActiveCheckbox(JSON.parse(localStorage.getItem('isShortFilm')))
+      debugger;
+
       // // console.log(isShortFilm)
       // setFilteredMovies(JSON.parse(localStorage.getItem('beatFilm')))
     }
+    setIsActiveCheckbox(checkbox || false);
+    console.log(isActiveCheckbox);
+
     setIsButtonMoreVisible(true);
   }, []);
+
+  useEffect(() => {
+    console.log(isActiveCheckbox);
+  }, [isActiveCheckbox]);
 
   useEffect(() => {
     setFilteredMovies(
@@ -62,6 +69,7 @@ function App() {
   }, [isActiveCheckbox]);
 
   useEffect(() => {
+    // debugger;
     setSavedMovies(
       handleFilter(
         JSON.parse(localStorage.getItem("savedMovies")),
@@ -184,6 +192,7 @@ function App() {
           console.log(err);
         })
         .finally(() => {
+          debugger;
           setPreloader(false);
           console.log(preloader);
         });
@@ -232,23 +241,26 @@ function App() {
   };
 
   const handleLikeCard = (movie) => {
-    console.log(savedMovies);
     const isSaved = savedMovies.find((m) => m.movieId === movie.id);
     if (isSaved) {
-      console.log("фильм уже сохранён");
       handleDeleteMovie(movie.id);
     } else {
       handleSaveMovie(movie);
     }
-    console.log(savedMovies);
   };
 
   const handleSaveMovie = (movie) => {
-    mainApi.saveMovie(movie).then((res) => {
-      console.log(res);
-      setSavedMovies((prev) => [...prev, res]);
-      localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
-    });
+    mainApi
+      .saveMovie(movie)
+      .then((res) => {
+        console.log(res);
+        setSavedMovies((prev) => [...prev, res]);
+        localStorage.setItem(
+          "savedMovies",
+          JSON.stringify(savedMovies.concat(res))
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleDeleteMovie = (id) => {
@@ -260,7 +272,7 @@ function App() {
           return m.movieId !== id;
         });
         setSavedMovies(newSavedMovies);
-        localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+        localStorage.setItem("savedMovies", JSON.stringify(newSavedMovies));
       })
       .catch((err) => console.log(err));
   };
@@ -429,13 +441,11 @@ function App() {
                     savedMoviesCheckbox={savedMoviesCheckbox}
                     setInputValue={setInputValue}
                     onChangeSavedCheckbox={handleChangeSavedCheckbox}
-                    // handleChangeCheckbox={handleChangeCheckbox}
-                    //
                     savedMovies={savedMovies}
                     onCountDuration={handleCountDuration}
                     onDeleteMovie={handleDeleteMovie}
                   />
-                  {preloader && <Preloader />}
+                  {true && <Preloader />}
                 </>
               }
             />
