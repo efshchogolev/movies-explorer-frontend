@@ -322,25 +322,14 @@ function App() {
       });
   };
 
-  const handleClearStorage = () => {
-    localStorage.removeItem("inputValue");
-    localStorage.removeItem("localMovies");
-    localStorage.removeItem("filteredMovies");
-    localStorage.removeItem("beatFilm");
-    localStorage.removeItem("isShortFilm");
-    localStorage.removeItem("savedMovies");
-  };
-
   const handleLogout = () => {
     mainApi
       .logout()
       .then(() => {
         setCurrentUser({ name: "", email: "" });
+        localStorage.clear();
         setIsLoggedIn(false);
         navigate("/");
-      })
-      .then(() => {
-        handleClearStorage();
       })
       .catch((err) => {
         console.log(err);
