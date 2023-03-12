@@ -437,7 +437,7 @@ function App() {
                     onCountDuration={handleCountDuration}
                     onDeleteMovie={handleDeleteMovie}
                   />
-                  {true && <Preloader />}
+                  {preloader && <Preloader />}
                 </>
               }
             />
