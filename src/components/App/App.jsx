@@ -333,6 +333,7 @@ function App() {
         setFilteredMovies([]);
         setSavedMovies([]);
         setIsActiveCheckbox(false);
+        setInputValue("");
       })
       .catch((err) => {
         console.log(err);
