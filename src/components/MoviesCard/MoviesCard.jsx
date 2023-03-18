@@ -19,7 +19,7 @@ function MoviesCard({
 
   const handleDeleteCard = () => {
     console.log(card);
-    onDeleteMovie(card.movieId);
+    onDeleteMovie(card._Id);
   };
 
   let isSaved = savedMovies.some((m) => m.movieId === card.id);
