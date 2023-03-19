@@ -1,6 +1,10 @@
 import "./FilterCheckbox.css";
 
-function FilterCheckbox({ isActiveCheckbox, handleChangeCheckbox }) {
+function FilterCheckbox({
+  isActiveCheckbox,
+  handleChangeCheckbox,
+  formParams,
+}) {
   return (
     <div className="filter">
       <p className="filter__text">Короткометражки</p>
@@ -9,10 +13,11 @@ function FilterCheckbox({ isActiveCheckbox, handleChangeCheckbox }) {
           type="checkbox"
           id="checkbox"
           className="filter__input"
-          value={isActiveCheckbox}
-          onChange={handleChangeCheckbox}
+          {...formParams}
+          // value={isActiveCheckbox}
+          // onChange={handleChangeCheckbox}
         />
-        <div className="filter__slider round"></div>
+        <div className="filter__slider"></div>
       </label>
     </div>
   );

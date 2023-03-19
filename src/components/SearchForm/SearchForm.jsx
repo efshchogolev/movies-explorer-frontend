@@ -1,41 +1,57 @@
+import { useForm } from "react-hook-form";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
 function SearchForm({
-  savedMovies,
   onSearch,
   inputValue,
-  setInputValue,
   isActiveCheckbox,
   handleChangeCheckbox,
 }) {
-  function handleChangeInput(e) {
-    setInputValue(e.target.value);
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSearch(inputValue);
-    console.log(savedMovies);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = useForm({
+    mode: "onSubmit",
+    defaultValues: {
+      searchInput: inputValue || "",
+      checkbox: isActiveCheckbox,
+    },
+  });
+
+  const onSubmit = (data) => {
+    onSearch(data.searchInput, data.checkbox);
   };
 
   return (
     <div className="search">
       <div className="search__container">
-        <form className="search__form" onSubmit={handleSubmit}>
+        <form className="search__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="search__form-container">
             <input
               className="search__input"
               placeholder="Фильм"
-              required
-              value={inputValue || ""}
-              onChange={handleChangeInput}
+              {...register("searchInput", {
+                required: "Введите название фильма",
+              })}
             ></input>
-            <button className="search__find-button"></button>
+            <button type="submit" className="search__find-button"></button>
           </div>
+          {errors?.searchInput && (
+            <span>{errors?.searchInput?.message || "error"}</span>
+          )}
           <FilterCheckbox
-            isActiveCheckbox={isActiveCheckbox}
             handleChangeCheckbox={handleChangeCheckbox}
-          />
+            formParams={{
+              ...register("checkbox", {
+                onChange: () => {
+                  handleChangeCheckbox(watch("checkbox"));
+                },
+              }),
+            }}
+          ></FilterCheckbox>
         </form>
       </div>
     </div>

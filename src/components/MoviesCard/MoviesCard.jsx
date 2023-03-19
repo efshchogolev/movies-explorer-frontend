@@ -13,7 +13,6 @@ function MoviesCard({
   onDeleteMovie,
 }) {
   const handleLikeCard = () => {
-    // console.log(card)
     onLikeCard(card);
   };
 

@@ -12,7 +12,6 @@ function SavedMovies({
   onCountDuration,
   onDeleteMovie,
   inputValue,
-  setInputValue,
   savedMoviesCheckbox,
   onChangeSavedCheckbox,
 }) {
@@ -22,9 +21,7 @@ function SavedMovies({
       <SearchForm
         onSearch={onSearch}
         inputValue={inputValue}
-        setInputValue={setInputValue}
         isActiveCheckbox={savedMoviesCheckbox}
-        savedMovies={savedMovies}
         handleChangeCheckbox={onChangeSavedCheckbox}
       />
       <MoviesCardList>

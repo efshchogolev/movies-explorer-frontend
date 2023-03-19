@@ -17,10 +17,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [preloader, setPreloader] = useState(false);
-  // const [localMovies, setLocalMovies] = useState([])
   const [inputValue, setInputValue] = useState("");
-  // debugger
-  // const [isShortFilm, setIsShortFilm] = useState(false)
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,27 +38,16 @@ function App() {
     if (localStorage.getItem("beatFilm")) {
       handleCheckWidth();
       setInputValue(JSON.parse(localStorage.getItem("inputValue")));
-      // console.log(isShortFilm)
-      // debugger;
-
-      // // console.log(isShortFilm)
-      // setFilteredMovies(JSON.parse(localStorage.getItem('beatFilm')))
+      setIsButtonMoreVisible(true);
     }
     setIsActiveCheckbox(checkbox || false);
-    console.log(isActiveCheckbox);
-
-    setIsButtonMoreVisible(true);
   }, []);
-
-  useEffect(() => {
-    console.log(isActiveCheckbox);
-  }, [isActiveCheckbox]);
 
   useEffect(() => {
     setFilteredMovies(
       handleFilter(
         JSON.parse(localStorage.getItem("localMovies")),
-        false,
+        JSON.parse(localStorage.getItem("inputValue")),
         isActiveCheckbox
       )
     );
@@ -84,6 +70,7 @@ function App() {
   }, [preloader]);
 
   useEffect(() => {
+    // console.log(filteredMovies);
     if (localStorage.getItem("beatFilm")) {
       setCardListText("Ничего не найдено");
     } else {
@@ -125,12 +112,13 @@ function App() {
     }
   }, [numberOfMovies, filteredMovies]);
 
-  function handleChangeCheckbox(e) {
-    setIsActiveCheckbox(e.target.checked);
-    localStorage.setItem("isShortFilm", JSON.stringify(e.target.checked));
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  function handleChangeCheckbox(checked) {
+    setIsActiveCheckbox(checked);
+    localStorage.setItem("isShortFilm", JSON.stringify(checked));
   }
 
-  const handleFilter = (movies, keyWord, isActiveCheckbox) => {
+  const handleFilter = (movies, keyWord, checkbox) => {
     if (keyWord) {
       movies = movies.filter(
         ({ nameRU, nameEN }) =>
@@ -140,7 +128,7 @@ function App() {
       localStorage.setItem("localMovies", JSON.stringify(movies));
     }
 
-    if (isActiveCheckbox) {
+    if (checkbox) {
       movies = handleShortFilmFilter(movies);
     }
     localStorage.setItem("filteredMovies", JSON.stringify(movies));
@@ -159,6 +147,62 @@ function App() {
     }
   };
 
+  const handleSearch = (inputValue, checkbox) => {
+    // debugger;
+    if (!localStorage.getItem("beatFilm")) {
+      setPreloader(true);
+      console.log(preloader);
+      moviesApi
+        .getApiMovies()
+        .then((res) => {
+          setFilteredMovies(handleFilter(res, inputValue, checkbox));
+          localStorage.setItem("beatFilm", JSON.stringify(res));
+          console.log(filteredMovies);
+          localStorage.setItem(
+            "filteredMovies",
+            JSON.stringify(filteredMovies)
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setPreloader(false);
+          console.log(preloader);
+        });
+    } else {
+      setFilteredMovies(
+        handleFilter(
+          JSON.parse(localStorage.getItem("beatFilm")),
+          inputValue,
+          checkbox
+        )
+      );
+    }
+    if (inputValue) {
+      localStorage.setItem("inputValue", JSON.stringify(inputValue));
+    }
+    // localStorage.setItem("isShortFilm", JSON.stringify(checkbox));
+  };
+
+  const handleSavedSearch = (inputValue, checkbox) => {
+    if (localStorage.getItem("savedMovies")) {
+      setSavedMovies(
+        handleFilter(
+          JSON.parse(localStorage.getItem("savedMovies")),
+          inputValue,
+          checkbox
+        )
+      );
+    }
+  };
+
+  const handleChangeSavedCheckbox = (e) => {
+    setSavedMoviesCheckbox(e.target.checked);
+    console.log(savedMoviesCheckbox);
+  };
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   window.addEventListener(
     "resize",
     function (event) {
@@ -172,54 +216,6 @@ function App() {
   function handleToggleMenu() {
     setMenuOpen(!isMenuOpen);
   }
-
-  const handleSearch = (inputValue) => {
-    if (!localStorage.getItem("beatFilm")) {
-      setPreloader(true);
-      console.log(preloader);
-      moviesApi
-        .getApiMovies()
-        .then((res) => {
-          setFilteredMovies(handleFilter(res, inputValue, isActiveCheckbox));
-          localStorage.setItem("beatFilm", JSON.stringify(res));
-          console.log(filteredMovies);
-          localStorage.setItem(
-            "filteredMovies",
-            JSON.stringify(filteredMovies)
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          debugger;
-          setPreloader(false);
-          console.log(preloader);
-        });
-    } else {
-      setFilteredMovies(
-        handleFilter(
-          JSON.parse(localStorage.getItem("beatFilm")),
-          inputValue,
-          isActiveCheckbox
-        )
-      );
-    }
-    localStorage.setItem("inputValue", JSON.stringify(inputValue));
-    localStorage.setItem("isShortFilm", JSON.stringify(isActiveCheckbox));
-  };
-
-  const handleSavedSearch = (inputValue) => {
-    if (localStorage.getItem("savedMovies")) {
-      setSavedMovies(
-        handleFilter(
-          JSON.parse(localStorage.getItem("savedMovies")),
-          inputValue,
-          isActiveCheckbox
-        )
-      );
-    }
-  };
 
   const handleCheckWidth = () => {
     const width = window.innerWidth;
@@ -352,11 +348,6 @@ function App() {
     }
   };
 
-  const handleChangeSavedCheckbox = (e) => {
-    setSavedMoviesCheckbox(e.target.checked);
-    console.log(savedMoviesCheckbox);
-  };
-
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -400,6 +391,7 @@ function App() {
                   ></Header>
                   <Movies
                     onSearch={handleSearch}
+                    // onFilter={handleFilter}
                     moviesList={filteredMovies}
                     inputValue={inputValue}
                     isActiveCheckbox={isActiveCheckbox}

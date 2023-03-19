@@ -11,9 +11,7 @@ function Movies({
   onSearch,
   moviesList,
   inputValue,
-  setInputValue,
   isActiveCheckbox,
-  setIsActiveCheckbox,
   handleChangeCheckbox,
   cardListText,
   preloader,
@@ -26,11 +24,9 @@ function Movies({
 }) {
   return (
     <>
-      {/* <Header /> */}
       <SearchForm
         onSearch={onSearch}
         inputValue={inputValue}
-        setInputValue={setInputValue}
         isActiveCheckbox={isActiveCheckbox}
         handleChangeCheckbox={handleChangeCheckbox}
       />
