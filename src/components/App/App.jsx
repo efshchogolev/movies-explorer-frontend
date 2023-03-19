@@ -42,7 +42,7 @@ function App() {
       handleCheckWidth();
       setInputValue(JSON.parse(localStorage.getItem("inputValue")));
       // console.log(isShortFilm)
-      debugger;
+      // debugger;
 
       // // console.log(isShortFilm)
       // setFilteredMovies(JSON.parse(localStorage.getItem('beatFilm')))
@@ -241,9 +241,9 @@ function App() {
   };
 
   const handleLikeCard = (movie) => {
-    const isSaved = savedMovies.find((m) => m.movieId === movie.id);
-    if (isSaved) {
-      handleDeleteMovie(movie.id);
+    const savedMovie = savedMovies.find((m) => m.movieId === movie.id);
+    if (savedMovie) {
+      handleDeleteMovie(savedMovie);
     } else {
       handleSaveMovie(movie);
     }
@@ -263,13 +263,15 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleDeleteMovie = (id) => {
+  const handleDeleteMovie = (card) => {
     mainApi
-      .deleteMovie(id)
+      .deleteMovie(card)
       .then((res) => {
+        console.log(card);
         const newSavedMovies = savedMovies.filter((m) => {
-          console.log(m);
-          return m.movieId !== id;
+          console.log(m.movieId);
+          console.log(card.movieId);
+          return m.movieId !== card.movieId;
         });
         setSavedMovies(newSavedMovies);
         localStorage.setItem("savedMovies", JSON.stringify(newSavedMovies));

@@ -37,8 +37,9 @@ class MainApi {
     }).then(this._getJsonOrError);
   }
 
-  deleteMovie(id) {
-    return fetch(`${this._baseUrl}/movies/${id}`, {
+  deleteMovie(card) {
+    console.log(card);
+    return fetch(`${this._baseUrl}/movies/${card._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
