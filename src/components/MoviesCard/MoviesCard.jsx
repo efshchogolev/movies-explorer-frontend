@@ -22,7 +22,9 @@ function MoviesCard({
     onDeleteMovie(card);
   };
 
-  let isSaved = savedMovies.some((m) => m.movieId === card.movieId);
+  let isSaved = savedMovies.some((m) => {
+    return m.movieId === card.id;
+  });
 
   return (
     <li className="card">

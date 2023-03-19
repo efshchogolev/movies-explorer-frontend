@@ -253,7 +253,6 @@ function App() {
     mainApi
       .saveMovie(movie)
       .then((res) => {
-        console.log(res);
         setSavedMovies((prev) => [...prev, res]);
         localStorage.setItem(
           "savedMovies",
@@ -267,7 +266,6 @@ function App() {
     mainApi
       .deleteMovie(card)
       .then((res) => {
-        console.log(card);
         const newSavedMovies = savedMovies.filter((m) => {
           console.log(m.movieId);
           console.log(card.movieId);

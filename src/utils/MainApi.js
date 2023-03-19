@@ -14,7 +14,6 @@ class MainApi {
   }
 
   saveMovie(movie) {
-    console.log(movie);
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
       headers: {
@@ -38,7 +37,6 @@ class MainApi {
   }
 
   deleteMovie(card) {
-    console.log(card);
     return fetch(`${this._baseUrl}/movies/${card._id}`, {
       method: "DELETE",
       headers: {
