@@ -14,8 +14,6 @@ function FilterCheckbox({
           id="checkbox"
           className="filter__input"
           {...formParams}
-          // value={isActiveCheckbox}
-          // onChange={handleChangeCheckbox}
         />
         <div className="filter__slider"></div>
       </label>

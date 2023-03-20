@@ -22,7 +22,6 @@
 }
 
 .filter__slider {
-  /* display: none; */
   background-color: #202020;
   bottom: 0;
   cursor: pointer;
@@ -68,10 +67,6 @@
   .filter {
     margin: 44px 0 44px 0;
   }
-
-  /* .filter__label {
-    margin: 0;
-  } */
 
   .filter__text {
     margin: 0 13px 0 0;

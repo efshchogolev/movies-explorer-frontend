@@ -20,8 +20,6 @@ class MoviesApi {
 
 const moviesApi = new MoviesApi(
   "https://api.nomoreparties.co"
-  // "https://api.mexplorersh.nomoredomains.club"
-  // "http://localhost:3001"
 );
 
 export default moviesApi;

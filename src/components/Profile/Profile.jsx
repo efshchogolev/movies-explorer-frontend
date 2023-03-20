@@ -35,7 +35,6 @@ function Profile({ onChangeProfile, profileMessage, handleLogout }) {
 
   return (
     <>
-      {/* <Header></Header> */}
       <section className="profile">
         <div className="profile__container">
           <h1 className="profile__hello">Привет, {userName}!</h1>

@@ -42,25 +42,10 @@ function App() {
   const location = useLocation();
   const path = useParams();
 
-  // useEffect(() => {
-  //   mainApi
-  //     .getUserInfoFromServer()
-  //     .then((data) => {
-  //       setCurrentUser(data);
-  //       setIsLoggedIn(true);
-  //     })
-
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   useEffect(() => {
     const checkbox = JSON.parse(localStorage.getItem("isShortFilm"));
     if (localStorage.getItem("beatFilm")) {
-      // handleCheckWidth();
       setInputValue(JSON.parse(localStorage.getItem("inputValue")));
-      // setIsButtonMoreVisible(true);
-      // console.log(path);
-      // navigate(path);
     }
     setIsActiveCheckbox(checkbox || false);
   }, []);
@@ -73,7 +58,6 @@ function App() {
         isActiveCheckbox
       )
     );
-    // localStorage.setItem('isShortFilm', JSON.stringify(isActiveCheckbox))
   }, [isActiveCheckbox]);
 
   useEffect(() => {
@@ -150,7 +134,6 @@ function App() {
     }
   }, [numberOfMovies, filteredMovies]);
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   function handleChangeCheckbox(checked) {
     setIsActiveCheckbox(checked);
     localStorage.setItem("isShortFilm", JSON.stringify(checked));
@@ -175,7 +158,6 @@ function App() {
       movies = handleShortFilmFilter(movies);
     }
     localStorage.setItem("filteredMovies", JSON.stringify(movies));
-    // handleCheckWidth();
 
     return movies;
   };
@@ -253,22 +235,12 @@ function App() {
   const handleSavedSearch = (inputValue, checkbox) => {
     if (localStorage.getItem("savedMovies")) {
       setSavedMovies(handleSavedFilter(inputValue, checkbox));
-
-      // setSavedMovies(
-      //   handleFilter(
-      //     JSON.parse(localStorage.getItem("savedMovies")),
-      //     inputValue,
-      //     checkbox
-      //   )
-      // );
     }
   };
 
   const handleChangeSavedCheckbox = (checked) => {
     setSavedMoviesCheckbox(checked);
-    // console.log(savedMoviesCheckbox);
   };
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   window.addEventListener(
     "resize",
@@ -488,9 +460,7 @@ function App() {
                   ></Header>
                   <SavedMovies
                     onSearch={handleSavedSearch}
-                    // inputValue={inputValue}
                     isActiveCheckbox={savedMoviesCheckbox}
-                    // setInputValue={setInputValue}
                     onChangeSavedCheckbox={handleChangeSavedCheckbox}
                     savedMovies={savedMovies}
                     onCountDuration={handleCountDuration}

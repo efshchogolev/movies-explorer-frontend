@@ -17,7 +17,6 @@ function SavedMovies({
 }) {
   return (
     <>
-      {/* <Header /> */}
       <SearchForm
         onSearch={onSearch}
         inputValue={inputValue}
@@ -33,7 +32,6 @@ function SavedMovies({
             button={"card__save"}
             onCountDuration={onCountDuration}
             cardImage={card.thumbnail}
-            // onLikeCard={onLikeCard}
             savedMovies={savedMovies}
             isSavedMoviesPage={true}
             onDeleteMovie={onDeleteMovie}

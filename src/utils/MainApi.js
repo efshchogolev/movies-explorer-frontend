@@ -3,7 +3,6 @@ class MainApi {
     this._baseUrl = baseUrl;
 
     this._getJsonOrError = this._getJsonOrError.bind(this);
-    // this._getHeaders = this._getHeaders.bind(this)
   }
 
   _getJsonOrError(res) {
@@ -111,9 +110,6 @@ class MainApi {
   };
 }
 
-const mainApi = new MainApi(
-  "https://api.shchegolef.nomoredomains.club"
-  // "http://localhost:3001"
-);
+const mainApi = new MainApi("https://api.shchegolef.nomoredomains.club");
 
 export default mainApi;

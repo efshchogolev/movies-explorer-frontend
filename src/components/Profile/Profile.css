@@ -44,7 +44,6 @@
   font-size: 11px;
   line-height: 13px;
   display: flex;
-  /* margin: 0 0 16px 0; */
 }
 
 .profile__input {
@@ -62,7 +61,6 @@
 }
 
 .profile__input_email {
-  /* margin: 17px 0 0 0; */
 }
 
 .profile__error-message {
