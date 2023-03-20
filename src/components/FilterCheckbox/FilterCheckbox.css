@@ -39,7 +39,7 @@
   bottom: 2px;
   content: "";
   height: 16px;
-  left: 2px;
+  right: 2px;
   position: absolute;
   transition: 0.4s;
   width: 16px;
@@ -47,7 +47,7 @@
 }
 
 .filter__input:checked + .filter__slider:before {
-  transform: translateX(16px);
+  transform: translateX(-16px);
   background-color: #3ddc84;
 }
 

@@ -1,6 +1,12 @@
 import "./App.css";
 import Header from "../Header/Header";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -33,14 +39,28 @@ function App() {
   const [isButtonMoreVisible, setIsButtonMoreVisible] = useState(false);
   const [profileMessage, setProfileMessage] = useState("");
   const navigate = useNavigate();
-  var location = useLocation();
+  const location = useLocation();
+  const path = useParams();
+
+  // useEffect(() => {
+  //   mainApi
+  //     .getUserInfoFromServer()
+  //     .then((data) => {
+  //       setCurrentUser(data);
+  //       setIsLoggedIn(true);
+  //     })
+
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   useEffect(() => {
     const checkbox = JSON.parse(localStorage.getItem("isShortFilm"));
     if (localStorage.getItem("beatFilm")) {
-      handleCheckWidth();
+      // handleCheckWidth();
       setInputValue(JSON.parse(localStorage.getItem("inputValue")));
-      setIsButtonMoreVisible(true);
+      // setIsButtonMoreVisible(true);
+      // console.log(path);
+      // navigate(path);
     }
     setIsActiveCheckbox(checkbox || false);
   }, []);
@@ -62,7 +82,15 @@ function App() {
   }, [location]);
 
   useEffect(() => {
-    // debugger;
+    if (location.pathname === "/signin" && isLoggedIn) {
+      navigate("/movies");
+    }
+    if (location.pathname === "/signup" && isLoggedIn) {
+      navigate("/movies");
+    }
+  }, [location.pathname, navigate, isLoggedIn]);
+
+  useEffect(() => {
     setSavedMovies(
       handleFilter(
         JSON.parse(localStorage.getItem("filteredSavedMovies")),
@@ -77,7 +105,8 @@ function App() {
   }, [preloader]);
 
   useEffect(() => {
-    // console.log(filteredMovies);
+    console.log(filteredMovies);
+    localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
     if (localStorage.getItem("beatFilm")) {
       setCardListText("Ничего не найдено");
     } else {
@@ -91,7 +120,7 @@ function App() {
       .then((data) => {
         setCurrentUser(data);
         setIsLoggedIn(true);
-        navigate("/movies");
+        navigate(path);
       })
       .catch((err) => console.log(err));
   }, [isLoggedIn]);
@@ -109,7 +138,9 @@ function App() {
   }, [isLoggedIn]);
 
   useEffect(() => {
-    if (
+    if (JSON.parse(localStorage.getItem("filteredMovies")) === null) {
+      setIsButtonMoreVisible(false);
+    } else if (
       numberOfMovies >=
       JSON.parse(localStorage.getItem("filteredMovies"))?.length
     ) {
@@ -144,7 +175,7 @@ function App() {
       movies = handleShortFilmFilter(movies);
     }
     localStorage.setItem("filteredMovies", JSON.stringify(movies));
-    handleCheckWidth();
+    // handleCheckWidth();
 
     return movies;
   };
@@ -161,7 +192,6 @@ function App() {
   };
 
   const handleSearch = (inputValue, checkbox) => {
-    // debugger;
     if (!localStorage.getItem("beatFilm")) {
       setPreloader(true);
       console.log(preloader);
@@ -196,6 +226,7 @@ function App() {
       localStorage.setItem("inputValue", JSON.stringify(inputValue));
       setInputValue(JSON.parse(localStorage.getItem("inputValue")));
     }
+    handleCheckWidth();
   };
 
   const handleSavedFilter = (keyWord, checkbox) => {
@@ -427,7 +458,6 @@ function App() {
                   ></Header>
                   <Movies
                     onSearch={handleSearch}
-                    // onFilter={handleFilter}
                     moviesList={filteredMovies}
                     inputValue={inputValue}
                     isActiveCheckbox={isActiveCheckbox}
