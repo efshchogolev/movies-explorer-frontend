@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "../Header/Header";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -18,6 +18,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 function App() {
   const [preloader, setPreloader] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [savedInputValue, setSavedInputValue] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +33,7 @@ function App() {
   const [isButtonMoreVisible, setIsButtonMoreVisible] = useState(false);
   const [profileMessage, setProfileMessage] = useState("");
   const navigate = useNavigate();
+  var location = useLocation();
 
   useEffect(() => {
     const checkbox = JSON.parse(localStorage.getItem("isShortFilm"));
@@ -55,10 +57,15 @@ function App() {
   }, [isActiveCheckbox]);
 
   useEffect(() => {
+    if (location.pathname === "/saved-movies");
+    setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
+  }, [location]);
+
+  useEffect(() => {
     // debugger;
     setSavedMovies(
       handleFilter(
-        JSON.parse(localStorage.getItem("savedMovies")),
+        JSON.parse(localStorage.getItem("filteredSavedMovies")),
         false,
         savedMoviesCheckbox
       )
@@ -118,13 +125,18 @@ function App() {
     localStorage.setItem("isShortFilm", JSON.stringify(checked));
   }
 
+  const handleKeyWordFilter = (movies, keyWord) => {
+    movies = movies.filter(
+      ({ nameRU, nameEN }) =>
+        nameRU.toLowerCase().includes(keyWord.toLowerCase()) ||
+        nameEN.toLowerCase().includes(keyWord.toLowerCase())
+    );
+    return movies;
+  };
+
   const handleFilter = (movies, keyWord, checkbox) => {
     if (keyWord) {
-      movies = movies.filter(
-        ({ nameRU, nameEN }) =>
-          nameRU.toLowerCase().includes(keyWord.toLowerCase()) ||
-          nameEN.toLowerCase().includes(keyWord.toLowerCase())
-      );
+      movies = handleKeyWordFilter(movies, keyWord);
       localStorage.setItem("localMovies", JSON.stringify(movies));
     }
 
@@ -133,6 +145,7 @@ function App() {
     }
     localStorage.setItem("filteredMovies", JSON.stringify(movies));
     handleCheckWidth();
+
     return movies;
   };
 
@@ -181,25 +194,48 @@ function App() {
     }
     if (inputValue) {
       localStorage.setItem("inputValue", JSON.stringify(inputValue));
+      setInputValue(JSON.parse(localStorage.getItem("inputValue")));
     }
-    // localStorage.setItem("isShortFilm", JSON.stringify(checkbox));
+  };
+
+  const handleSavedFilter = (keyWord, checkbox) => {
+    var movies;
+    if (keyWord) {
+      console.log(JSON.parse(localStorage.getItem("savedMovies")));
+      movies = handleKeyWordFilter(
+        JSON.parse(localStorage.getItem("savedMovies")),
+        keyWord
+      );
+      localStorage.setItem("filteredSavedMovies", JSON.stringify(movies));
+    }
+
+    if (checkbox) {
+      movies = handleShortFilmFilter(
+        JSON.parse(localStorage.getItem("filteredSavedMovies"))
+      );
+    }
+
+    handleCheckWidth();
+    return movies;
   };
 
   const handleSavedSearch = (inputValue, checkbox) => {
     if (localStorage.getItem("savedMovies")) {
-      setSavedMovies(
-        handleFilter(
-          JSON.parse(localStorage.getItem("savedMovies")),
-          inputValue,
-          checkbox
-        )
-      );
+      setSavedMovies(handleSavedFilter(inputValue, checkbox));
+
+      // setSavedMovies(
+      //   handleFilter(
+      //     JSON.parse(localStorage.getItem("savedMovies")),
+      //     inputValue,
+      //     checkbox
+      //   )
+      // );
     }
   };
 
-  const handleChangeSavedCheckbox = (e) => {
-    setSavedMoviesCheckbox(e.target.checked);
-    console.log(savedMoviesCheckbox);
+  const handleChangeSavedCheckbox = (checked) => {
+    setSavedMoviesCheckbox(checked);
+    // console.log(savedMoviesCheckbox);
   };
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -422,9 +458,9 @@ function App() {
                   ></Header>
                   <SavedMovies
                     onSearch={handleSavedSearch}
-                    inputValue={inputValue}
-                    savedMoviesCheckbox={savedMoviesCheckbox}
-                    setInputValue={setInputValue}
+                    // inputValue={inputValue}
+                    isActiveCheckbox={savedMoviesCheckbox}
+                    // setInputValue={setInputValue}
                     onChangeSavedCheckbox={handleChangeSavedCheckbox}
                     savedMovies={savedMovies}
                     onCountDuration={handleCountDuration}

@@ -21,7 +21,7 @@ function MoviesCard({
     onDeleteMovie(card);
   };
 
-  let isSaved = savedMovies.some((m) => {
+  let isSaved = JSON.parse(localStorage.getItem("savedMovies")).some((m) => {
     return m.movieId === card.id;
   });
 

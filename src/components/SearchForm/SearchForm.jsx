@@ -22,6 +22,7 @@ function SearchForm({
   });
 
   const onSubmit = (data) => {
+    console.log(data);
     onSearch(data.searchInput, data.checkbox);
   };
 
