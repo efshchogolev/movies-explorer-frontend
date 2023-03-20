@@ -41,8 +41,11 @@ function SearchForm({
             <button type="submit" className="search__find-button"></button>
           </div>
           {errors?.searchInput && (
-            <span>{errors?.searchInput?.message || "error"}</span>
+            <span className="search__error-message">
+              {errors?.searchInput?.message || "error"}
+            </span>
           )}
+
           <FilterCheckbox
             handleChangeCheckbox={handleChangeCheckbox}
             formParams={{
