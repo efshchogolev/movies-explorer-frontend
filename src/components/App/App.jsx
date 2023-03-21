@@ -345,7 +345,7 @@ function App() {
     mainApi
       .setUserInfo(data.username, data.email)
       .then((user) => {
-        setCurrentUser({ name: user.name, email: data.email });
+        setCurrentUser({ name: user.name, email: user.email });
       })
       .then(() => {
         setProfileMessage("Данные успешно изменены");
