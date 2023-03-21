@@ -26,15 +26,8 @@ function Profile({ onChangeProfile, profileMessage, handleLogout }) {
     mode: "onChange",
   });
 
-  // useEffect(() => {
-  //   console.log(currentUser.email);
-  //   // setUserEmail(currentUser.email);
-  //   // setUserName(currentUser.name);
-  // }, [currentUser]);
-
   const onChangeProfileSubmit = (data) => {
     onChangeProfile(data);
-    // console.log(data);
     setUserEmail(data.email);
     setUserName(data.username);
   };
