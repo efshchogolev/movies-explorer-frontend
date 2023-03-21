@@ -17,18 +17,24 @@ function Profile({ onChangeProfile, profileMessage, handleLogout }) {
     register,
     formState: { errors, isValid },
     handleSubmit,
-    reset,
     watch,
   } = useForm({
     defaultValues: {
-      username: userName,
-      email: userEmail,
+      username: `${userName}`,
+      email: `${userEmail}`,
     },
     mode: "onChange",
   });
 
+  // useEffect(() => {
+  //   console.log(currentUser.email);
+  //   // setUserEmail(currentUser.email);
+  //   // setUserName(currentUser.name);
+  // }, [currentUser]);
+
   const onChangeProfileSubmit = (data) => {
     onChangeProfile(data);
+    // console.log(data);
     setUserEmail(data.email);
     setUserName(data.username);
   };
@@ -37,7 +43,7 @@ function Profile({ onChangeProfile, profileMessage, handleLogout }) {
     <>
       <section className="profile">
         <div className="profile__container">
-          <h1 className="profile__hello">Привет, {userName}!</h1>
+          <h1 className="profile__hello">{`Привет, ${userName}!`}</h1>
           <form
             className="profile__form"
             onSubmit={handleSubmit(onChangeProfileSubmit)}

@@ -102,12 +102,25 @@ function App() {
     mainApi
       .getUserInfoFromServer()
       .then((data) => {
+        // debugger;
         setCurrentUser(data);
         setIsLoggedIn(true);
         navigate(path);
       })
       .catch((err) => console.log(err));
   }, [isLoggedIn]);
+
+  // useEffect(() => {
+  //   mainApi
+  //     .getUserInfoFromServer()
+  //     .then((data) => {
+  //       debugger;
+  //       setCurrentUser(data);
+  //       // setIsLoggedIn(true);
+  //       // navigate(path);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -342,12 +355,13 @@ function App() {
 
   const handleChangeProfile = (data) => {
     setProfileMessage("");
-    console.log(data);
+    // console.log(data);
     mainApi
       .setUserInfo(data.username, data.email)
-      .then(() => {
-        setCurrentUser(data.username, data.email);
+      .then((user) => {
+        setCurrentUser({ name: user.name, email: data.email });
       })
+      // .then(console.log(currentUser))
       .then(() => {
         setProfileMessage("Данные успешно изменены");
       })
@@ -355,6 +369,7 @@ function App() {
         console.log(err);
         setProfileMessage("Произошла ошибка");
       });
+    // console.log(currentUser);
   };
 
   const handleLogout = () => {
