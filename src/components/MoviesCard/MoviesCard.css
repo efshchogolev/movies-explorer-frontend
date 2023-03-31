@@ -1,7 +1,7 @@
 .card {
   width: 364px;
   height: 271px;
-  /* max-height: 271px; */
+  overflow: hidden;
   background-color: #222;
 }
 .card__info {
@@ -21,6 +21,10 @@
   line-height: 18px;
   margin: 0;
   grid-area: name;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 270px;
 }
 
 .card__time {

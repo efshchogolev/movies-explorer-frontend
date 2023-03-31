@@ -1,15 +1,11 @@
-import './MoviesCardList.css'
-
-
+import "./MoviesCardList.css";
 
 function MoviesCardList({ children }) {
   return (
     <>
-      <ul className='card-list'>
-        {children}
-      </ul>
+      <ul className="card-list">{children}</ul>
     </>
-  )
+  );
 }
 
-export default MoviesCardList
+export default MoviesCardList;

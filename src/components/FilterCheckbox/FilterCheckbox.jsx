@@ -1,15 +1,24 @@
-import './FilterCheckbox.css'
+import "./FilterCheckbox.css";
 
-function FilterCheckbox() {
+function FilterCheckbox({
+  isActiveCheckbox,
+  handleChangeCheckbox,
+  formParams,
+}) {
   return (
     <div className="filter">
-      <p className='filter__text'>Короткометражки</p>
+      <p className="filter__text">Короткометражки</p>
       <label className="filter__label" htmlFor="checkbox">
-        <input type="checkbox" id="checkbox" className='filter__input' />
-        <div className="filter__slider round"></div>
+        <input
+          type="checkbox"
+          id="checkbox"
+          className="filter__input"
+          {...formParams}
+        />
+        <div className="filter__slider"></div>
       </label>
     </div>
-  )
+  );
 }
 
-export default FilterCheckbox
+export default FilterCheckbox;

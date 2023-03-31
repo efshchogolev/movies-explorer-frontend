@@ -11,7 +11,7 @@
   font-size: 10px;
   line-height: 12px;
   color: #8b8b8b;
-  margin: 20px 0 0 0;
+  margin: 6px 0 0 0;
 }
 
 .auth-form__label:first-child {
@@ -39,7 +39,8 @@
 
 .auth-form__error-message {
   display: block;
-  margin: 10px 0 0 0;
+  margin: 2px 0 0 0;
+  min-height: 12px;
   font-size: 10px;
   line-height: 12px;
   color: #ee3465;
@@ -47,6 +48,17 @@
 
 .auth-form__error-message_invisible {
   visibility: hidden;
+}
+
+.auth-form__error-message_register-api {
+  align-self: center;
+  min-height: 12px;
+  margin: 55px 0 10px 0;
+}
+
+.auth-form__error-message_login-api {
+  align-self: center;
+  margin: 47px 0 10px 0;
 }
 
 .auth-form__button {
@@ -65,12 +77,23 @@
   cursor: pointer;
 }
 
+.auth-form__button_register {
+  margin: 0;
+}
+
 .auth-form__button_login {
-  margin-top: 157px;
+  margin-top: 95px;
 }
 
 .auth-form__button:hover {
   opacity: 0.8;
+}
+
+.auth-form__button:disabled {
+  opacity: 0.8;
+  color: #000;
+  background-color: #fff;
+  cursor: default;
 }
 
 .auth-form__text {
@@ -102,15 +125,22 @@
 
 @media screen and (max-width: 767px) {
   .auth-form {
-    /* padding: 0 0 232px 0; */
     max-width: 260px;
     margin: 0 auto;
   }
 
   .auth-form__button {
-    margin: 157px 0 0 0;
+    margin: 0 0 0 0;
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .auth-form__error-message_register-api {
+    margin: 135px 0 10px 0;
+  }
+
+  .auth-form__error-message_login-api {
+    margin: 135px 0 10px 0;
   }
 
   .auth-form__text {
@@ -125,6 +155,6 @@
   }
 
   .auth-form__button_login {
-    margin-top: 245px;
+    margin-top: 0px;
   }
 }

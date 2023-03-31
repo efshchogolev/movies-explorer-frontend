@@ -1,33 +1,46 @@
-import './Header.css'
-import logoPath from '../../images/logo.svg'
+import "./Header.css";
+import logoPath from "../../images/logo.svg";
 import { Link } from "react-router-dom";
-import Menu from '../Menu/Menu'
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import Menu from "../Menu/Menu";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-
-function Header() {
-
+function Header({ onOpenMenu, isMenuOpen, setMenuOpen }) {
   return (
-    <header className='header'>
-      <div className='header__container'>
-        <Link to='/' >
-          <img src={logoPath} alt="логотип" className='header__logo' />
+    <header className="header">
+      <div className="header__container">
+        <Link to="/">
+          <img src={logoPath} alt="логотип" className="header__logo" />
         </Link>
         <Menu>
-          <div className='menu__films-container'>
-            <Link className='menu__link menu__link_films_bold menu__link_films' to='/movies'>Фильмы</Link>
-            <Link className='menu__link menu__link_films' to='/saved-movies'>Сохранённые фильмы</Link>
+          <div className="menu__films-container">
+            <Link
+              className="menu__link menu__link_films_bold menu__link_films"
+              to="/movies"
+            >
+              Фильмы
+            </Link>
+            <Link className="menu__link menu__link_films" to="/saved-movies">
+              Сохранённые фильмы
+            </Link>
           </div>
-          <div className='menu__account-container'>
-            <Link className='menu__link menu__link_account' to='/profile'>Аккаунт</Link>
-            <Link to='/profile' className='menu__link menu__link_avatar'><div className='menu__avatar-container'></div></Link>
+          <div className="menu__account-container">
+            <Link className="menu__link menu__link_account" to="/profile">
+              Аккаунт
+            </Link>
+            <Link to="/profile" className="menu__link menu__link_avatar">
+              <div className="menu__avatar-container"></div>
+            </Link>
           </div>
         </Menu>
 
-        <BurgerMenu />
+        <BurgerMenu
+          onOpenMenu={onOpenMenu}
+          isMenuOpen={isMenuOpen}
+          setMenuOpen={setMenuOpen}
+        />
       </div>
     </header>
-  )
+  );
 }
 
 export default Header;

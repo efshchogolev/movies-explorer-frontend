@@ -17,52 +17,73 @@
   margin: 0;
 }
 
-.profile__data-container {
+.profile__form {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 410px;
   width: 100%;
-  margin: 123px 0 0 0;
+  margin: 120px 0 0 0;
 }
 
-.profile__name-container {
+.profile__input-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #424242;
+  width: 100%;
+}
+
+.profile__label_name {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #424242;
 }
 
-.profile__text-title {
+.profile__label {
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
-  margin: 0 0 16px 0;
+  display: flex;
 }
 
-.profile__text-title_email {
-  margin: 17px 0 0 0;
-}
-
-.profile__text {
+.profile__input {
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
-  margin: 0 0 16px 0;
+  margin: 0 0 4px 0;
+  background-color: #202020;
+  border: none;
+  color: #fff;
+  text-align: right;
+  max-width: 269px;
+  width: 100%;
+  outline: none;
 }
 
-.profile__text_email {
+.profile__input_email {
+}
+
+.profile__error-message {
+  display: block;
+  min-height: 12px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+}
+
+.profile__error-message_positive {
+  color: #00e17a;
+}
+
+.profile__label_email {
   margin: 17px 0 0 0;
-}
-
-.profile__email-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .profile__button {
-  margin: 220px 0 0 0;
+  margin: 190px 0 0 0;
   background-color: #202020;
   border: none;
   color: #fff;
@@ -78,6 +99,12 @@
   opacity: 0.8;
 }
 
+.profile__button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  text-decoration: line-through;
+}
+
 .profile__button_exit {
   color: #ee3465;
   font-weight: 500;
@@ -85,6 +112,9 @@
 }
 
 @media screen and (max-width: 1279px) {
+  .profile__form {
+    margin-top: 95px;
+  }
   .profile {
     padding-top: 232px;
   }
@@ -93,12 +123,12 @@
     margin-top: 96px;
   }
 
-  .profile__text-title_email {
+  .profile__label_email {
     margin-top: 18px;
   }
 
   .profile__button {
-    margin: 211px 0 0 0;
+    margin: 180px 0 0 0;
   }
 
   .profile__button_exit {
@@ -117,12 +147,21 @@
   }
 
   .profile__button {
-    margin: 379px 0 0 0;
+    margin: 350px 0 0 0;
     font-size: 12px;
     line-height: 15px;
   }
 
   .profile__button_exit {
     margin: 16px 0 0 0;
+  }
+
+  .profile__form {
+    margin-top: 78px;
+    max-width: 260px;
+  }
+
+  .profile__input {
+    max-width: 220px;
   }
 }

@@ -48,7 +48,6 @@
     top: 8px;
     right: 7px;
     cursor: pointer;
-    z-index: 3;
   }
 
   .burger-menu__button_close {
@@ -56,6 +55,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    position: fixed;
+    top: 26px;
+    right: 37px;
   }
 
   .burger-menu__nav-links {
