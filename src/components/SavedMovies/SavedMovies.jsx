@@ -3,7 +3,6 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./SavedMovies.css";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 function SavedMovies({
@@ -11,7 +10,6 @@ function SavedMovies({
   savedMovies,
   onCountDuration,
   onDeleteMovie,
-  inputValue,
   savedMoviesCheckbox,
   onChangeSavedCheckbox,
 }) {
@@ -19,7 +17,6 @@ function SavedMovies({
     <>
       <SearchForm
         onSearch={onSearch}
-        inputValue={inputValue}
         isActiveCheckbox={savedMoviesCheckbox}
         handleChangeCheckbox={onChangeSavedCheckbox}
       />
@@ -29,7 +26,6 @@ function SavedMovies({
             trailerLink={card.trailerLink}
             card={card}
             key={card.movieId}
-            button={"card__save"}
             onCountDuration={onCountDuration}
             cardImage={card.thumbnail}
             savedMovies={savedMovies}

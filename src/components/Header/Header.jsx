@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Menu from "../Menu/Menu";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-function Header({ onOpenMenu, isMenuOpen, setMenuOpen }) {
+function Header({ onOpenMenu, isMenuOpen }) {
   return (
     <header className="header">
       <div className="header__container">
@@ -33,11 +33,7 @@ function Header({ onOpenMenu, isMenuOpen, setMenuOpen }) {
           </div>
         </Menu>
 
-        <BurgerMenu
-          onOpenMenu={onOpenMenu}
-          isMenuOpen={isMenuOpen}
-          setMenuOpen={setMenuOpen}
-        />
+        <BurgerMenu onOpenMenu={onOpenMenu} isMenuOpen={isMenuOpen} />
       </div>
     </header>
   );

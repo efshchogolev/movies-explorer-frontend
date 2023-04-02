@@ -1,7 +1,6 @@
-import Header from "../Header/Header";
 import "./Profile.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 function Profile({ onChangeProfile, profileMessage, handleLogout }) {

@@ -1,13 +1,10 @@
 import "./MoviesCard.css";
-import cn from "classnames";
 
 function MoviesCard({
-  button,
   card,
   onCountDuration,
   onLikeCard,
   trailerLink,
-  savedMovies,
   cardImage,
   isSavedMoviesPage,
   onDeleteMovie,
@@ -17,7 +14,6 @@ function MoviesCard({
   };
 
   const handleDeleteCard = () => {
-    console.log(card);
     onDeleteMovie(card);
   };
 

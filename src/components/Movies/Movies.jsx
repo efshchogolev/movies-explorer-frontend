@@ -3,7 +3,6 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./Movies.css";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 
@@ -37,7 +36,6 @@ function Movies({
               trailerLink={card.trailerLink}
               card={card}
               key={card.id}
-              button={"card__save"}
               onCountDuration={onCountDuration}
               onLikeCard={onLikeCard}
               cardImage={`https://api.nomoreparties.co${card.image.url}`}

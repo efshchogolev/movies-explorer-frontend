@@ -1,10 +1,6 @@
 import "./FilterCheckbox.css";
 
-function FilterCheckbox({
-  isActiveCheckbox,
-  handleChangeCheckbox,
-  formParams,
-}) {
+function FilterCheckbox({ formParams }) {
   return (
     <div className="filter">
       <p className="filter__text">Короткометражки</p>

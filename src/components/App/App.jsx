@@ -89,7 +89,6 @@ function App() {
   }, [preloader]);
 
   useEffect(() => {
-    console.log(filteredMovies);
     localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
     if (localStorage.getItem("beatFilm")) {
       setCardListText("Ничего не найдено");
@@ -176,13 +175,11 @@ function App() {
   const handleSearch = (inputValue, checkbox) => {
     if (!localStorage.getItem("beatFilm")) {
       setPreloader(true);
-      console.log(preloader);
       moviesApi
         .getApiMovies()
         .then((res) => {
           setFilteredMovies(handleFilter(res, inputValue, checkbox));
           localStorage.setItem("beatFilm", JSON.stringify(res));
-          console.log(filteredMovies);
           localStorage.setItem(
             "filteredMovies",
             JSON.stringify(filteredMovies)
@@ -193,7 +190,6 @@ function App() {
         })
         .finally(() => {
           setPreloader(false);
-          console.log(preloader);
         });
     } else {
       setFilteredMovies(
@@ -214,7 +210,6 @@ function App() {
   const handleSavedFilter = (keyWord, checkbox) => {
     var movies;
     if (keyWord) {
-      console.log(JSON.parse(localStorage.getItem("savedMovies")));
       movies = handleKeyWordFilter(
         JSON.parse(localStorage.getItem("savedMovies")),
         keyWord
@@ -244,7 +239,7 @@ function App() {
 
   window.addEventListener(
     "resize",
-    function (event) {
+    function () {
       setTimeout(() => {
         handleCheckWidth();
       }, 0);
@@ -302,8 +297,6 @@ function App() {
       .deleteMovie(card)
       .then((res) => {
         const newSavedMovies = savedMovies.filter((m) => {
-          console.log(m.movieId);
-          console.log(card.movieId);
           return m.movieId !== card.movieId;
         });
         setSavedMovies(newSavedMovies);
@@ -316,8 +309,7 @@ function App() {
     setErrorMessage("");
     mainApi
       .register(data.username, data.password, data.email)
-      .then((res) => {
-        console.log(data);
+      .then(() => {
         handleLogin(data);
       })
       .catch((err) => {
@@ -330,7 +322,7 @@ function App() {
     setErrorMessage("");
     mainApi
       .login(data.email, data.password)
-      .then((res) => {
+      .then(() => {
         setIsLoggedIn(true);
         navigate("/movies");
       })
@@ -397,7 +389,6 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 onOpenMenu={handleToggleMenu}
                 isMenuOpen={isMenuOpen}
-                setMenuOpen={setMenuOpen}
               />
             }
           />
@@ -425,15 +416,12 @@ function App() {
                   <Header
                     onOpenMenu={handleToggleMenu}
                     isMenuOpen={isMenuOpen}
-                    setMenuOpen={setMenuOpen}
                   ></Header>
                   <Movies
                     onSearch={handleSearch}
                     moviesList={filteredMovies}
                     inputValue={inputValue}
                     isActiveCheckbox={isActiveCheckbox}
-                    setInputValue={setInputValue}
-                    setIsActiveCheckbox={setIsActiveCheckbox}
                     handleChangeCheckbox={handleChangeCheckbox}
                     cardListText={cardListText}
                     preloader={preloader}
@@ -455,7 +443,6 @@ function App() {
                   <Header
                     onOpenMenu={handleToggleMenu}
                     isMenuOpen={isMenuOpen}
-                    setMenuOpen={setMenuOpen}
                   ></Header>
                   <SavedMovies
                     onSearch={handleSavedSearch}
@@ -476,7 +463,6 @@ function App() {
                   <Header
                     onOpenMenu={handleToggleMenu}
                     isMenuOpen={isMenuOpen}
-                    setMenuOpen={setMenuOpen}
                   ></Header>
                   <Profile
                     onChangeProfile={handleChangeProfile}

@@ -10,17 +10,13 @@ import HeaderLanding from "../HeaderLanding/HeaderLanding";
 import Footer from "../Footer/Footer";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-function Main({ isLoggedIn, onOpenMenu, isMenuOpen, setMenuOpen }) {
+function Main({ isLoggedIn, onOpenMenu, isMenuOpen }) {
   return (
     <>
       {isLoggedIn ? (
         <>
           <HeaderLanding>
-            <BurgerMenu
-              onOpenMenu={onOpenMenu}
-              isMenuOpen={isMenuOpen}
-              setMenuOpen={setMenuOpen}
-            />
+            <BurgerMenu onOpenMenu={onOpenMenu} isMenuOpen={isMenuOpen} />
             <Menu>
               <div className="menu__films-container">
                 <Link

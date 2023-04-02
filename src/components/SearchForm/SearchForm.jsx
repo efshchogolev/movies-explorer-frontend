@@ -22,7 +22,6 @@ function SearchForm({
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     onSearch(data.searchInput, data.checkbox);
   };
 
@@ -47,7 +46,6 @@ function SearchForm({
           )}
 
           <FilterCheckbox
-            handleChangeCheckbox={handleChangeCheckbox}
             formParams={{
               ...register("checkbox", {
                 onChange: () => {
