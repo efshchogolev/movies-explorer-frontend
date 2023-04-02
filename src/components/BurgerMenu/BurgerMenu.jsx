@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BurgerMenu.css";
-import { useState } from "react";
 
-function BurgerMenu({ onOpenMenu, isMenuOpen, setMenuOpen }) {
+function BurgerMenu({ onOpenMenu, isMenuOpen }) {
   return (
     <div className="burger-menu">
       <button className={`burger-menu__button`} onClick={onOpenMenu}></button>

@@ -24,7 +24,6 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 function App() {
   const [preloader, setPreloader] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [savedInputValue, setSavedInputValue] = useState("");
   const [savedMovies, setSavedMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -63,6 +62,7 @@ function App() {
   useEffect(() => {
     if (location.pathname === "/saved-movies");
     setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
+    setMenuOpen(false);
   }, [location]);
 
   useEffect(() => {
