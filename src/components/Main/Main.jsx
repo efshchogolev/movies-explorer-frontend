@@ -9,6 +9,11 @@ import Techs from "../Techs/Techs";
 import HeaderLanding from "../HeaderLanding/HeaderLanding";
 import Footer from "../Footer/Footer";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import {
+  PATH_MOVIES,
+  PATH_PROFILE,
+  PATH_SAVED_MOVIES,
+} from "../../utils/constants";
 
 function Main({ isLoggedIn, onOpenMenu, isMenuOpen }) {
   return (
@@ -21,22 +26,28 @@ function Main({ isLoggedIn, onOpenMenu, isMenuOpen }) {
               <div className="menu__films-container">
                 <Link
                   className="menu__link menu__link_films_bold menu__link_films"
-                  to="/movies"
+                  to={PATH_MOVIES}
                 >
                   Фильмы
                 </Link>
                 <Link
                   className="menu__link menu__link_films"
-                  to="/saved-movies"
+                  to={PATH_SAVED_MOVIES}
                 >
                   Сохранённые фильмы
                 </Link>
               </div>
               <div className="menu__account-container">
-                <Link className="menu__link menu__link_account" to="/profile">
+                <Link
+                  className="menu__link menu__link_account"
+                  to={PATH_PROFILE}
+                >
                   Аккаунт
                 </Link>
-                <Link to="/profile" className="menu__link menu__link_avatar">
+                <Link
+                  to={PATH_PROFILE}
+                  className="menu__link menu__link_avatar"
+                >
                   <div className="menu__avatar-container"></div>
                 </Link>
               </div>

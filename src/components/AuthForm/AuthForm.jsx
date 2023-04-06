@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./AuthForm.css";
 import { useForm } from "react-hook-form";
+import { REGEX_EMAIL, REGEX_NAME } from "../../utils/constants";
 
 function AuthForm({
   buttonText,
@@ -9,10 +10,6 @@ function AuthForm({
   errorMessage,
   onLogin,
 }) {
-  const EMAIL_REGEX =
-    /^(?=.{1,256})(?=.{1,64}@)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const NAME_REGEX = /^[\p{L}\s-]+$/u;
-
   const {
     register,
     formState: { errors, isValid },
@@ -43,7 +40,7 @@ function AuthForm({
                 {...register("email", {
                   required: "Это поле обязательно",
                   pattern: {
-                    value: EMAIL_REGEX,
+                    value: REGEX_EMAIL,
                     message: "Неверный email",
                   },
                 })}
@@ -108,7 +105,7 @@ function AuthForm({
                     message: "Максимум 30 символов",
                   },
                   pattern: {
-                    value: NAME_REGEX,
+                    value: REGEX_NAME,
                     message: "Только кириллица, латиница, пробел или дефис",
                   },
                 })}
@@ -128,7 +125,7 @@ function AuthForm({
                 {...register("email", {
                   required: "Это поле обязательно",
                   pattern: {
-                    value: EMAIL_REGEX,
+                    value: REGEX_EMAIL,
                     message: "Неверный email",
                   },
                 })}

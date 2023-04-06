@@ -5,6 +5,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./Movies.css";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
+import { MOVIES_API } from "../../utils/constants";
 
 function Movies({
   onSearch,
@@ -38,7 +39,7 @@ function Movies({
               key={card.id}
               onCountDuration={onCountDuration}
               onLikeCard={onLikeCard}
-              cardImage={`https://api.nomoreparties.co${card.image.url}`}
+              cardImage={`${MOVIES_API}${card.image.url}`}
               savedMovies={savedMovies}
               isSavedMoviesPage={false}
             />

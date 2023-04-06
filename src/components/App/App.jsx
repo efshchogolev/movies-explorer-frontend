@@ -20,6 +20,28 @@ import { useEffect, useState } from "react";
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import {
+  CARD_LIST_TEXT_FAILURE,
+  CARD_LIST_TEXT_INITIAL,
+  CONFLICT_ERROR_MESSAGE,
+  DATA_ERROR_MESSAGE,
+  DESKTOP_INITIAL_MOVIES,
+  DESKTOP_MIN_WIDTH,
+  DESKTOP_ROW_MOVIES,
+  MOBILE_INITIAL_MOVIES,
+  MOBILE_MAX_WIDTH,
+  MOBILE_ROW_MOVIES,
+  PATH_MOVIES,
+  PATH_PROFILE,
+  PATH_SAVED_MOVIES,
+  PATH_HOME,
+  PATH_SIGNIN,
+  PATH_SIGNUP,
+  PROFILE_MESSAGE_FAILURE,
+  PROFILE_MESSAGE_SUCCESS,
+  TABLET_INITIAL_MOVIES,
+  TABLET_ROW_MOVIES,
+} from "../../utils/constants";
 
 function App() {
   const [preloader, setPreloader] = useState(false);
@@ -32,7 +54,7 @@ function App() {
   const [isActiveCheckbox, setIsActiveCheckbox] = useState(false);
   const [savedMoviesCheckbox, setSavedMoviesCheckbox] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [cardListText, setCardListText] = useState("Введите название фильма");
+  const [cardListText, setCardListText] = useState(CARD_LIST_TEXT_INITIAL);
   const [numberOfMovies, setNumberOfMovies] = useState(12);
   const [numberOfAddMovies, setNumberOfAddMovies] = useState(3);
   const [isButtonMoreVisible, setIsButtonMoreVisible] = useState(false);
@@ -60,17 +82,17 @@ function App() {
   }, [isActiveCheckbox]);
 
   useEffect(() => {
-    if (location.pathname === "/saved-movies");
+    if (location.pathname === PATH_SAVED_MOVIES);
     setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
     setMenuOpen(false);
   }, [location]);
 
   useEffect(() => {
-    if (location.pathname === "/signin" && isLoggedIn) {
-      navigate("/movies");
+    if (location.pathname === PATH_SIGNIN && isLoggedIn) {
+      navigate(PATH_MOVIES);
     }
-    if (location.pathname === "/signup" && isLoggedIn) {
-      navigate("/movies");
+    if (location.pathname === PATH_SIGNUP && isLoggedIn) {
+      navigate(PATH_MOVIES);
     }
   }, [location.pathname, navigate, isLoggedIn]);
 
@@ -91,9 +113,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
     if (localStorage.getItem("beatFilm")) {
-      setCardListText("Ничего не найдено");
+      setCardListText(CARD_LIST_TEXT_FAILURE);
     } else {
-      setCardListText("Введите название фильма");
+      setCardListText(CARD_LIST_TEXT_INITIAL);
     }
   }, [filteredMovies]);
 
@@ -254,15 +276,15 @@ function App() {
   const handleCheckWidth = () => {
     const width = window.innerWidth;
 
-    if (width > 768) {
-      setNumberOfMovies(12);
-      setNumberOfAddMovies(3);
-    } else if (width > 320) {
-      setNumberOfMovies(8);
-      setNumberOfAddMovies(2);
+    if (width > DESKTOP_MIN_WIDTH) {
+      setNumberOfMovies(DESKTOP_INITIAL_MOVIES);
+      setNumberOfAddMovies(DESKTOP_ROW_MOVIES);
+    } else if (width > MOBILE_MAX_WIDTH) {
+      setNumberOfMovies(TABLET_INITIAL_MOVIES);
+      setNumberOfAddMovies(TABLET_ROW_MOVIES);
     } else {
-      setNumberOfMovies(5);
-      setNumberOfAddMovies(2);
+      setNumberOfMovies(MOBILE_INITIAL_MOVIES);
+      setNumberOfAddMovies(MOBILE_ROW_MOVIES);
     }
   };
 
@@ -314,7 +336,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setErrorMessage("Такой пользователь уже зарегестрирован");
+        setErrorMessage(CONFLICT_ERROR_MESSAGE);
       });
   };
 
@@ -324,10 +346,10 @@ function App() {
       .login(data.email, data.password)
       .then(() => {
         setIsLoggedIn(true);
-        navigate("/movies");
+        navigate(PATH_MOVIES);
       })
       .catch((err) => {
-        setErrorMessage("Неверный email или пароль");
+        setErrorMessage(DATA_ERROR_MESSAGE);
         console.log(err);
       });
   };
@@ -340,11 +362,11 @@ function App() {
         setCurrentUser({ name: user.name, email: user.email });
       })
       .then(() => {
-        setProfileMessage("Данные успешно изменены");
+        setProfileMessage(PROFILE_MESSAGE_SUCCESS);
       })
       .catch((err) => {
         console.log(err);
-        setProfileMessage("Произошла ошибка");
+        setProfileMessage(PROFILE_MESSAGE_FAILURE);
       });
   };
 
@@ -355,7 +377,7 @@ function App() {
         setCurrentUser({ name: "", email: "" });
         localStorage.clear();
         setIsLoggedIn(false);
-        navigate("/");
+        navigate(PATH_HOME);
         setFilteredMovies([]);
         setSavedMovies([]);
         setIsActiveCheckbox(false);
@@ -383,7 +405,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route
-            path="/"
+            path={PATH_HOME}
             element={
               <Main
                 isLoggedIn={isLoggedIn}
@@ -393,13 +415,13 @@ function App() {
             }
           />
           <Route
-            path="/signin"
+            path={PATH_SIGNIN}
             element={
               <Login onLogin={handleLogin} errorMessage={errorMessage} />
             }
           />
           <Route
-            path="/signup"
+            path={PATH_SIGNUP}
             element={
               <Register
                 onRegister={handleRegister}
@@ -410,7 +432,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route element={<ProtectedRoute loggedIn={isLoggedIn} />}>
             <Route
-              path="/movies"
+              path={PATH_MOVIES}
               element={
                 <>
                   <Header
@@ -437,7 +459,7 @@ function App() {
               }
             />
             <Route
-              path="/saved-movies"
+              path={PATH_SAVED_MOVIES}
               element={
                 <>
                   <Header
@@ -457,7 +479,7 @@ function App() {
               }
             />
             <Route
-              path="/profile"
+              path={PATH_PROFILE}
               element={
                 <>
                   <Header

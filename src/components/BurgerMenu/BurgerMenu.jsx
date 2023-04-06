@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import "./BurgerMenu.css";
+import {
+  PATH_HOME,
+  PATH_MOVIES,
+  PATH_PROFILE,
+  PATH_SAVED_MOVIES,
+} from "../../utils/constants";
 
 function BurgerMenu({ onOpenMenu, isMenuOpen }) {
   return (
@@ -17,20 +23,20 @@ function BurgerMenu({ onOpenMenu, isMenuOpen }) {
           ></button>
           <ul className="burger-menu__nav-links">
             <li className="burger-menu__list-item">
-              <Link className="burger-menu__nav-link" to="/">
+              <Link className="burger-menu__nav-link" to={PATH_HOME}>
                 Главная
               </Link>
             </li>
             <li className="burger-menu__list-item ">
               <Link
                 className="burger-menu__nav-link burger-menu__nav-link_active"
-                to="/movies"
+                to={PATH_MOVIES}
               >
                 Фильмы
               </Link>
             </li>
             <li className="burger-menu__list-item">
-              <Link className="burger-menu__nav-link" to="/saved-movies">
+              <Link className="burger-menu__nav-link" to={PATH_SAVED_MOVIES}>
                 Сохранённые фильмы
               </Link>
             </li>
@@ -38,12 +44,12 @@ function BurgerMenu({ onOpenMenu, isMenuOpen }) {
           <div className="burger-menu__account-container">
             <Link
               className="burger-menu__nav-link burger-menu__nav-link_account"
-              to="/profile"
+              to={PATH_PROFILE}
             >
               Аккаунт
             </Link>
             <Link
-              to="/profile"
+              to={PATH_PROFILE}
               className="burger-menu__nav-link burger-menu__nav-link_avatar"
             >
               <div className="burger-menu__avatar-container"></div>
