@@ -35,7 +35,7 @@ function MoviesCard({
           <button className="card__delete" onClick={handleDeleteCard}></button>
         )}
       </div>
-      <a href={trailerLink}>
+      <a href={trailerLink} target="_blank" rel="noreferrer">
         <img
           className="card__image"
           alt="Миниатюрное изображение фильма"
