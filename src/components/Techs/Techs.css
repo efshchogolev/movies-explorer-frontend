@@ -63,12 +63,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  margin: 10px 10px 0 0;
+  margin: 10px 5px 0 5px;
 }
 
-.techs__block:last-child {
-  margin-right: 0;
-}
 
 .techs__block-text {
   color: #fff;
@@ -135,12 +132,6 @@
 
   .techs__blocks-container {
     margin-top: 40px;
-    max-width: 178px;
-  }
-  .techs__block {
-    margin: 10px 10px 0 0;
-  }
-  .techs__block:nth-child(2n) {
-    margin-right: 0;
+    justify-content: center;
   }
 }
