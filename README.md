@@ -1,6 +1,6 @@
 # movies-explorer (фронтенд часть диплома Яндекс Практикум)
 
-[Превью](/images/preview.png)
+![Превью](/images/preview.png)
 
 ## О проекте
 
