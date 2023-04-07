@@ -73,6 +73,7 @@
   border-radius: 10px;
   max-height: 327px;
   width: 100%;
+  margin-left: 20px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -97,11 +98,6 @@
     margin: 19px 0 0 0;
   }
 
-  .about__text-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 364px;
-  }
 
   .about__link {
     margin: 88px 0 0 0;

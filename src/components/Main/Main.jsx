@@ -24,10 +24,7 @@ function Main({ isLoggedIn, onOpenMenu, isMenuOpen }) {
             <BurgerMenu onOpenMenu={onOpenMenu} isMenuOpen={isMenuOpen} />
             <Menu>
               <div className="menu__films-container">
-                <Link
-                  className="menu__link menu__link_films_bold menu__link_films"
-                  to={PATH_MOVIES}
-                >
+                <Link className="menu__link menu__link_films" to={PATH_MOVIES}>
                   Фильмы
                 </Link>
                 <Link

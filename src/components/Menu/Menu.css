@@ -52,8 +52,9 @@
   margin: 0;
 }
 
-.menu__link_films_bold {
+.menu__link_films_active {
   font-weight: 500;
+  border-bottom: 1px solid #fff;
 }
 
 @media screen and (max-width: 768px) {

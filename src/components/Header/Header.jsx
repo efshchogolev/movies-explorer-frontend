@@ -1,6 +1,6 @@
 import "./Header.css";
 import logoPath from "../../images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Menu from "../Menu/Menu";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import {
@@ -11,6 +11,7 @@ import {
 } from "../../utils/constants";
 
 function Header({ onOpenMenu, isMenuOpen }) {
+  const location = useLocation();
   return (
     <header className="header">
       <div className="header__container">
@@ -20,13 +21,21 @@ function Header({ onOpenMenu, isMenuOpen }) {
         <Menu>
           <div className="menu__films-container">
             <Link
-              className="menu__link menu__link_films_bold menu__link_films"
+              className={`menu__link menu__link_films ${
+                location.pathname === PATH_MOVIES
+                  ? "menu__link_films_active"
+                  : ""
+              }`}
               to={PATH_MOVIES}
             >
               Фильмы
             </Link>
             <Link
-              className="menu__link menu__link_films"
+              className={`menu__link menu__link_films ${
+                location.pathname === PATH_SAVED_MOVIES
+                  ? "menu__link_films_active"
+                  : ""
+              }`}
               to={PATH_SAVED_MOVIES}
             >
               Сохранённые фильмы

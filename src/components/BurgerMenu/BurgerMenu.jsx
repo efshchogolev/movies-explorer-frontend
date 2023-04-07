@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./BurgerMenu.css";
 import {
   PATH_HOME,
@@ -8,6 +8,7 @@ import {
 } from "../../utils/constants";
 
 function BurgerMenu({ onOpenMenu, isMenuOpen }) {
+  const location = useLocation();
   return (
     <div className="burger-menu">
       <button className={`burger-menu__button`} onClick={onOpenMenu}></button>
@@ -23,20 +24,38 @@ function BurgerMenu({ onOpenMenu, isMenuOpen }) {
           ></button>
           <ul className="burger-menu__nav-links">
             <li className="burger-menu__list-item">
-              <Link className="burger-menu__nav-link" to={PATH_HOME}>
+              <Link
+                className={`burger-menu__nav-link ${
+                  location.pathname === PATH_HOME
+                    ? "burger-menu__nav-link_active"
+                    : ""
+                }`}
+                to={PATH_HOME}
+              >
                 Главная
               </Link>
             </li>
             <li className="burger-menu__list-item ">
               <Link
-                className="burger-menu__nav-link burger-menu__nav-link_active"
+                className={`burger-menu__nav-link ${
+                  location.pathname === PATH_MOVIES
+                    ? "burger-menu__nav-link_active"
+                    : ""
+                }`}
                 to={PATH_MOVIES}
               >
                 Фильмы
               </Link>
             </li>
             <li className="burger-menu__list-item">
-              <Link className="burger-menu__nav-link" to={PATH_SAVED_MOVIES}>
+              <Link
+                className={`burger-menu__nav-link ${
+                  location.pathname === PATH_SAVED_MOVIES
+                    ? "burger-menu__nav-link_active"
+                    : ""
+                }`}
+                to={PATH_SAVED_MOVIES}
+              >
                 Сохранённые фильмы
               </Link>
             </li>
