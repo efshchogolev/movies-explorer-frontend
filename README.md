@@ -1,26 +1,26 @@
-# movies-explorer (фронтенд часть диплома Яндекс Практикум)
+# Movies Explorer (Frontend Part of Yandex Practicum Diploma)
 
-![Превью](/images/preview.png)
+![Preview](/images/preview.png)
 
-## О проекте
+## About the Project
 
-_Проект является сервисом, который позволяет искать фильмы и сохрнять понравившиеся в профиль. Также есть домашняя страница, которая является небольшой визиткой_
+_The project is a service that allows users to search for movies and save their favorites to their profile. Additionally, there is a homepage that serves as a small personal portfolio._
 
-## Цель создания
+## Purpose
 
-_Проект создавался с целью практики и закрепленя навыков, полученных в ходе обучения на курсе веб-разработки_
+_The project was developed to practice and solidify skills acquired during the web development course._
 
-## Доработки
+## Future Improvements
 
-В будущем планируется замена API
+- Replacement of the current API is planned.
 
-## Используемые технологии
+## Technologies Used
 
-- Адаптивня верстка
-- Grid
+- Responsive Design
+- Grid Layout
 - ReactJS
 - React Hook Form
 - React Router
 
-Ссылка на макет - https://disk.yandex.ru/d/Oe5D6Wv-6PzdOA \
-Ссылка на фронтенд часть приложения - https://shchegolef.nomoredomains.club/movies
+**Design Link**: [Figma Layout](https://disk.yandex.ru/d/Oe5D6Wv-6PzdOA)  
+**Frontend Application Link**: [Movies Explorer](https://shchegolef.nomoredomains.club/movies)
